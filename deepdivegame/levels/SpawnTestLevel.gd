@@ -45,7 +45,6 @@ func spawn_feesh(feesh_type):
 	pos_vector.y = round(rand_range(0,180))  # ints only muahaha
 	
 	print("Spawning at ", pos_vector)
-	
-	new_feesh.change_speed(400.0)
+
 	new_feesh.change_pos(pos_vector)
 	add_child(new_feesh)

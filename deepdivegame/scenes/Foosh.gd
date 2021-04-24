@@ -19,8 +19,9 @@ func player_detected(Player):
 	state = TARGET_PLAYER
 	player = Player
 
-func player_lost():
+func player_lost(Player):
 	print("lost player")
+	player = null
 	if(state == TARGET_PLAYER):
 		state = SWIM
 
