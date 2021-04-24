@@ -31,9 +31,9 @@ func _physics_process(delta):
 	$AnimatedSprite.flip_h = flip
 	# slow animation if not moving
 	if abs(velocity.x) > 0:
-		$AnimatedSprite.speed_scale = 1
+		$AnimatedSprite.animation = "swim_h"
 	else:
-		$AnimatedSprite.speed_scale = .25
+		$AnimatedSprite.animation = "idle"
 
 func _process(delta):
 	pass

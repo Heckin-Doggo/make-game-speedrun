@@ -1,13 +1,22 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/divertemp.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Diver.gd" type="Script" id=2]
 [ext_resource path="res://assets/Diver3.png" type="Texture" id=3]
 [ext_resource path="res://assets/Diver2.png" type="Texture" id=4]
 [ext_resource path="res://assets/Diver1.png" type="Texture" id=5]
+[ext_resource path="res://assets/DiverIdle2.png" type="Texture" id=6]
+[ext_resource path="res://assets/DiverIdle3.png" type="Texture" id=7]
+[ext_resource path="res://assets/DiverIdle1.png" type="Texture" id=8]
+[ext_resource path="res://assets/DiverIdle4.png" type="Texture" id=9]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
+"frames": [ ExtResource( 8 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "idle",
+"speed": 3.0
+}, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "swim_h",
@@ -22,8 +31,7 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
-animation = "swim_h"
-frame = 3
+animation = "idle"
 playing = true
 
 [node name="Sprite" type="Sprite" parent="."]
