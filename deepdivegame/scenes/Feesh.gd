@@ -23,3 +23,7 @@ func init(Side):
 func change_pos(pos : Vector2):
 	position.x = pos.x
 	position.y = pos.y
+
+func _on_VisibilityNotifier2D_screen_exited():
+	print("despawning")
+	queue_free()
