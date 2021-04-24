@@ -7,7 +7,6 @@ var side
 
 func _physics_process(delta): 
 	move_and_slide(velocity * speed * delta)
-	print(velocity)
 
 func init(Side):
 	if(side == "left"):
