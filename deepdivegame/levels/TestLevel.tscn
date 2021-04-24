@@ -5,4 +5,6 @@
 [node name="TestLevel" type="Node2D"]
 
 [node name="Diver" parent="." instance=ExtResource( 1 )]
-position = Vector2( 160, 96 )
+position = Vector2( 162, 81 )
+maxspeed = 50
+acceleration = 1000
