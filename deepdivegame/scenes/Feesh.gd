@@ -1,19 +1,22 @@
 extends KinematicBody2D
 class_name Feesh
 
-var speed = 20.0
+var speed = 1
 var velocity = Vector2.ZERO
+var side
 
 func _physics_process(delta):
-	move_and_slide(velocity)
+	move_and_slide(velocity * speed)
 
-func init(side):
+func init(Side):
 	if(side == "left"):
-		velocity.x = 1 * speed
+		velocity.x = 1
 		get_node("Sprite").flip_h = true
+		side = Side
 	else:
-		velocity.x = -1 * speed
+		velocity.x = -1
 		get_node("Sprite").flip_h = false
+		side = Side
 
 
 

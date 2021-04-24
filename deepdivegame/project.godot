@@ -57,6 +57,14 @@ texture={
 "svg/scale": 1.0
 }
 
+[layer_names]
+
+2d_physics/layer_1="player"
+2d_physics/layer_2="enemies"
+2d_physics/layer_3="detection boxes"
+2d_physics/layer_4="aesthetics"
+2d_physics/layer_5="collectables"
+
 [rendering]
 
 environment/default_clear_color=Color( 0.14902, 0.396078, 0.545098, 1 )

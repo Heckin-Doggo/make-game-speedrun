@@ -11,8 +11,8 @@ enum{
 }
 
 func _ready():
-	detection_box.connect("area_entered", self, "player_detected")
-	detection_box.connect("area_exited", self, "player_lost")
+	detection_box.connect("body_entered", self, "player_detected")
+	detection_box.connect("body_exited", self, "player_lost")
 
 func player_detected(Player):
 	print("found player")
@@ -27,11 +27,14 @@ func player_lost():
 func _physics_process(delta):
 	match state:
 		SWIM:
-			move(velocity)
+			if(side == "left"):
+				velocity = Vector2(1, 0)
+			else:
+				velocity = Vector2(-1, 0)
+				
 		TARGET_PLAYER:
-			velocity = player.position - position
+			velocity = (player.position - position).normalized()
+			
 		CHARGE:
 			pass
 
-func move(velocity):
-	move_and_slide(velocity)
