@@ -1,12 +1,9 @@
 extends KinematicBody2D
 
 var rng = RandomNumberGenerator.new()
-var screen_size = get_viewport_rect().size
+var screen_size = Vector2(180, 320)
 var speed = 20.0
 var velocity = Vector2.ZERO
-
-func _ready():
-	screen_size = get_viewport_rect().size
 
 func _physics_process(delta):
 	move_and_slide(velocity)
