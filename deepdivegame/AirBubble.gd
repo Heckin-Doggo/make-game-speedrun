@@ -35,15 +35,15 @@ func _physics_process(delta):
 
 func _on_bubble_pop(body):
 	print("Collided with ", body.name)
-	if not debounce:
+	if not debounce and body.name == "Diver":
 		debounce = true
 		globals.player["oxygen"] = clamp(globals.player["oxygen"]+oxygen_boost, 20, 68)  # 68 is o2 tank size
 		
 		# bubble effect
 		for i in range(5):
 			var bub = Bubble.instance()
-			bub.update_pos(Vector2($Sprite.position.x, $Sprite.position.y-9))  # this makes it local
-			add_child(bub)
+			bub.update_pos(Vector2($Sprite.position.x+randf(), $Sprite.position.y-9))  # this makes it local
+			body.add_child(bub)
 			yield(get_tree().create_timer(0.01),"timeout")  # wait
 		
 		queue_free()
