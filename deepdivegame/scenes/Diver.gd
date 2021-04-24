@@ -44,7 +44,6 @@ func _process(delta):
 	
 func _on_BubbleTimer_timeout():
 	for i in range(3):
-		print("bub")
 		var bub = Bubble.instance()
 		bub.update_pos(Vector2($Sprite.position.x, $Sprite.position.y-9))  # this makes it local
 		add_child(bub)

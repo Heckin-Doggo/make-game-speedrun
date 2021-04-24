@@ -3,9 +3,5 @@ extends Node2D
 const Feesh = preload("res://scenes/Feesh.tscn")
 
 func _ready():
-	$SpawnTimer.connect("timeout", self, "spawn_fish")
-
-func spawn_fish():
-	var feesh = Feesh.instance()
-	feesh.init()
-	add_child(feesh)
+	# $SpawnTimer.connect("timeout", self, "spawn_fish")
+	pass
