@@ -20,7 +20,7 @@ func _process(delta):
 	
 	var flashlight_power = globals.powerups["flashlight"]
 	if flashlight_power > 0:
-		print("power: ", flashlight_power)
+		# print("power: ", flashlight_power)
 		$FlashlightIndicator.visible = true
 		$FlashlightIndicator/Batteries.rect_size.y = 8 * globals.powerups["flashlight"]
 	else:

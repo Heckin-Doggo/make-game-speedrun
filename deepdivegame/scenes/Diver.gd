@@ -18,6 +18,7 @@ func _ready():
 	screen_size = get_viewport_rect().size
 	$BubbleTimer.connect("timeout", self, "_on_BubbleTimer_timeout")
 	$OxygenTimer.connect("timeout", self, "_on_OxygenTimer_timeout")
+	$FlashLightTimer.connect("timeout", self, "_on_FLTimer_timeout")
 
 
 # called every physics frame, which is before each drawn frame
@@ -33,7 +34,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(move_vector)
 	
 	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, 3000)
+	position.y = clamp(position.y, 0, 10000)
 	
 	# animation
 	var flip = velocity.x < 0
@@ -49,6 +50,14 @@ func _physics_process(delta):
 
 func _process(delta):
 	globals.player["depth"] = round(position.y)  # set it in globals
+	if globals.powerups["flashlight"] > 0:
+		if $FlashLightTimer.is_stopped():
+			$FlashLightTimer.start()
+		$Light2D.texture_scale = 3
+	else:
+		if !$FlashLightTimer.is_stopped():
+			$FlashLightTimer.stop()
+		$Light2D.texture_scale = 1
 
 
 func _on_BubbleTimer_timeout():
@@ -56,6 +65,13 @@ func _on_BubbleTimer_timeout():
 
 func _on_OxygenTimer_timeout():
 	globals.player["oxygen"] -= 1
+
+func _on_FLTimer_timeout():
+	print("FL tick")
+	$FlashLightTimer.start()
+	globals.powerups["flashlight"] -= 1
+	if globals.powerups["flashlight"] < 0:
+		$FlashLightTimer.stop()
 
 func spawn_bubbles(bubble_count, bubble_time):
 	for i in range(bubble_count):
