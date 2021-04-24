@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/Air Bubble.png" type="Texture" id=3]
+[ext_resource path="res://levels/HUD2.tscn" type="PackedScene" id=4]
 
 [node name="SpawnTestLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,3 +22,7 @@ texture = ExtResource( 3 )
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HUD2" parent="CanvasLayer" instance=ExtResource( 4 )]
