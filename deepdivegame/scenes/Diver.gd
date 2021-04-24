@@ -32,6 +32,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(move_vector)
 	
 	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, 3000)
 	
 	# animation
 	var flip = velocity.x < 0
