@@ -9,6 +9,7 @@ var screen_size
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$AnimatedSprite.playing = true
 	screen_size = get_viewport_rect().size
 
 

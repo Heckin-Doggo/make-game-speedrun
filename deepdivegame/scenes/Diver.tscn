@@ -32,7 +32,7 @@ script = ExtResource( 2 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "idle"
-playing = true
+frame = 1
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false
