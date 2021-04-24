@@ -4,7 +4,7 @@ var dash_speed = speed * 3
 var charge_direction = Vector2.ZERO
 var tired = false
 var state = SWIM
-var player
+var player_target
 onready var detection_box = $PlayerDetectionBox
 
 enum{
@@ -17,18 +17,18 @@ func _ready():
 	detection_box.connect("body_entered", self, "player_detected")
 	detection_box.connect("body_exited", self, "player_lost")
 
-func player_detected(Player):
+func player_detected(player):
 	print("found player")
 	if(tired == false):
 		state = TARGET_PLAYER
-		player = Player
+		player_target = player
 
-func player_lost(Player):
+func player_lost(player):
 	print("lost player")
 	if(tired == false):
 		state = CHARGE
-		charge_direction = (player.position - position).normalized()
-	player = null
+		charge_direction = (player_target.position - position).normalized()
+	player_target = null
 
 func _physics_process(delta):
 	match state:
@@ -39,7 +39,7 @@ func _physics_process(delta):
 				velocity = Vector2(-1, 0)
 				
 		TARGET_PLAYER:
-			velocity = (player.position - position).normalized()
+			velocity = (player_target.position - position).normalized()
 			
 		CHARGE:
 			tired = true

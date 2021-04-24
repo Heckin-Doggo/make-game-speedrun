@@ -12,13 +12,13 @@ func _physics_process(delta):
 	else:
 		get_node("Sprite").flip_h = false
 
-func init(Side):
-	if(side == "left"):
+func init(direction):
+	if(direction == "left"):
 		velocity.x = 1
-		side = Side
+		side = direction
 	else:
 		velocity.x = -1
-		side = Side
+		side = direction
 
 func change_pos(pos : Vector2):
 	position.x = pos.x
