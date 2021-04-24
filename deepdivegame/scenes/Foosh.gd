@@ -47,6 +47,7 @@ func _physics_process(delta):
 			tired = true
 			velocity = charge_direction
 			speed = dash_speed
+	position.y = clamp(position.y, 0, INF)
 
 func do_damage(body):
 	globals.player["oxygen"] -= 5

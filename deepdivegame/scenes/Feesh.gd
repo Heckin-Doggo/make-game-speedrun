@@ -16,6 +16,7 @@ func _physics_process(delta):
 		get_node("Sprite").flip_h = true
 	else:
 		get_node("Sprite").flip_h = false
+	position.y = clamp(position.y, 0, INF)
 
 func init(direction):
 	if(direction == "left"):
