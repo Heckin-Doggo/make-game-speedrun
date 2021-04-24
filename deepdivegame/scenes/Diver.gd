@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+# glboals
+onready var globals = get_node("/root/Globals")
 
 #variables
 export var movespeed_x = 50
@@ -14,6 +16,7 @@ func _ready():
 	$AnimatedSprite.playing = true
 	screen_size = get_viewport_rect().size
 	$BubbleTimer.connect("timeout", self, "_on_BubbleTimer_timeout")
+	$OxygenTimer.connect("timeout", self, "_on_OxygenTimer_timeout")
 
 
 # called every physics frame, which is before each drawn frame
@@ -48,3 +51,6 @@ func _on_BubbleTimer_timeout():
 		bub.update_pos(Vector2($Sprite.position.x, $Sprite.position.y-9))  # this makes it local
 		add_child(bub)
 		yield(get_tree().create_timer(0.3),"timeout")  # wait
+
+func _on_OxygenTimer_timeout():
+	globals.player["oxygen"] -= 1

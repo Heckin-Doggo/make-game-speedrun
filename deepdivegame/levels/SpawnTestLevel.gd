@@ -32,7 +32,8 @@ func _on_SpawnTimer_timeout():
 		print("right spawn")
 		pos_vector.x = x_bound
 		feesh.init("right")
-		
+	
+	
 	pos_vector.y = round(rand_range(0,180))  # ints only muahaha
 	
 	print("Spawning at ", pos_vector)
