@@ -37,6 +37,7 @@ animations = [ {
 extents = Vector2( 6, 6 )
 
 [node name="Diver" type="KinematicBody2D"]
+collision_mask = 9
 script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
@@ -65,7 +66,7 @@ wait_time = 6.0
 autostart = true
 
 [node name="OxygenTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 4.0
 autostart = true
 
 [node name="Light2D" type="Light2D" parent="."]
