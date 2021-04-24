@@ -51,11 +51,14 @@ func _process(delta):
 
 
 func _on_BubbleTimer_timeout():
-	for i in range(3):
-		var bub = Bubble.instance()
-		bub.update_pos(Vector2($Sprite.position.x, $Sprite.position.y-9))  # this makes it local
-		add_child(bub)
-		yield(get_tree().create_timer(0.3),"timeout")  # wait
+	spawn_bubbles(3, 0.3)
 
 func _on_OxygenTimer_timeout():
 	globals.player["oxygen"] -= 1
+
+func spawn_bubbles(bubble_count, bubble_time):
+	for i in range(bubble_count):
+		var bub = Bubble.instance()
+		bub.update_pos(Vector2($Sprite.position.x, $Sprite.position.y-9))  # this makes it local
+		add_child(bub)
+		yield(get_tree().create_timer(bubble_time),"timeout")  # wait

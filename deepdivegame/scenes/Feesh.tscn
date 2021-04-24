@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/feesh.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Feesh.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 5.0
 height = 7.0
+
+[sub_resource type="CapsuleShape2D" id=2]
 
 [node name="Feesh" type="KinematicBody2D"]
 collision_layer = 2
@@ -24,3 +26,12 @@ texture = ExtResource( 3 )
 texture_scale = 0.5
 color = Color( 1, 1, 1, 0.498039 )
 mode = 2
+
+[node name="Damagebox" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Damagebox"]
+rotation = 1.5708
+scale = Vector2( 0.55, 0.5 )
+shape = SubResource( 2 )
+[connection signal="body_entered" from="Damagebox" to="." method="_on_Damagebox_body_entered"]
