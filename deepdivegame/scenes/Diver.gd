@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 
 #variables
-export var movespeed_x = 20
-export var movespeed_y = 8
+export var movespeed_x = 50
+export var movespeed_y = 50
 
 var screen_size
 
