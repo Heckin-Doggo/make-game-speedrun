@@ -6,6 +6,7 @@ var tired = false
 var state = SWIM
 var player_target
 onready var detection_box = $PlayerDetectionBox
+onready var dmg_box = $Damagebox
 
 enum{
 	SWIM,
@@ -16,6 +17,7 @@ enum{
 func _ready():
 	detection_box.connect("body_entered", self, "player_detected")
 	detection_box.connect("body_exited", self, "player_lost")
+	dmg_box.connect("body_entered", self, "do_damage")
 
 func player_detected(player):
 	print("found player")
@@ -46,4 +48,7 @@ func _physics_process(delta):
 			velocity = charge_direction
 			speed = dash_speed
 
-
+func do_damage(body):
+	globals.player["oxygen"] -= 5
+	if(body.has_method("spawn_bubbles")):
+		body.spawn_bubbles(5, 0.1)
