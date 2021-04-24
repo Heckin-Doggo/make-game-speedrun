@@ -1,6 +1,7 @@
 extends Node2D
 
 onready var globals = get_node("/root/Globals")
+onready var darkness = $Darkness
 var Feesh = preload("res://scenes/Feesh.tscn")
 var Foosh = preload("res://scenes/Foosh.tscn")
 
@@ -17,7 +18,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	var color_value = 1 - (globals.player["depth"] * .0005)
+	var color = Color.from_hsv(0, 0, color_value)
+	darkness.set_color(color)
 
 
 # handles spawning
