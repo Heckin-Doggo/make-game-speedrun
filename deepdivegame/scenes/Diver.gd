@@ -5,9 +5,11 @@ extends KinematicBody2D
 export var movespeed_x = 20
 export var movespeed_y = 8
 
+var screen_size
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	screen_size = get_viewport_rect().size
 
 
 # called every physics frame, which is before each drawn frame
@@ -21,3 +23,5 @@ func _physics_process(delta):
 	var move_vector = (velocity + sink)
 	
 	velocity = move_and_slide(move_vector)
+	
+	position.x = clamp(position.x, 0, screen_size.x)
