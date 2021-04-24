@@ -22,29 +22,30 @@ func _process(delta):
 # handles spawning
 func _on_SpawnTimer_timeout():
 	var random_float = randf()
-	var new_foosh : Feesh = Foosh.instance()
+	
+	if random_float < 0.5:
+		spawn_feesh(Feesh)
+	else:
+		spawn_feesh(Foosh)
+
+func spawn_feesh(feesh_type):
+	var random_float = randf()
+	var new_feesh : Feesh = feesh_type.instance()
 	var pos_vector = Vector2()
 	
 	if random_float < 0.5:
 		print("left spawn")
 		pos_vector.x = 0
-		new_foosh.init("left")
+		new_feesh.init("left")
 	else:
 		print("right spawn")
 		pos_vector.x = x_bound
-		new_foosh.init("right")
-	
+		new_feesh.init("right")
 	
 	pos_vector.y = round(rand_range(0,180))  # ints only muahaha
 	
 	print("Spawning at ", pos_vector)
 	
-	new_foosh.change_speed(400.0)
-	new_foosh.change_pos(pos_vector)
-	add_child(new_foosh)
-
-
-
-
-
-
+	new_feesh.change_speed(400.0)
+	new_feesh.change_pos(pos_vector)
+	add_child(new_feesh)
