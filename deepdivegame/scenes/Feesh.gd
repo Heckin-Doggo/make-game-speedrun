@@ -20,3 +20,6 @@ func init(side):
 func change_pos(pos : Vector2):
 	position.x = pos.x
 	position.y = pos.y
+
+func change_speed(spd : float):
+	speed = spd

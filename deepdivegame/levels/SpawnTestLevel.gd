@@ -1,6 +1,7 @@
 extends Node2D
 
 var Feesh = preload("res://scenes/Feesh.tscn")
+var Foosh = preload("res://scenes/Foosh.tscn")
 
 var x_bound = 320
 # var rng = RandomNumberGenerator.new()
@@ -21,25 +22,26 @@ func _process(delta):
 # handles spawning
 func _on_SpawnTimer_timeout():
 	var random_float = randf()
-	var feesh : Feesh = Feesh.instance()
+	var new_foosh : Feesh = Foosh.instance()
 	var pos_vector = Vector2()
 	
 	if random_float < 0.5:
 		print("left spawn")
 		pos_vector.x = 0
-		feesh.init("left")
+		new_foosh.init("left")
 	else:
 		print("right spawn")
 		pos_vector.x = x_bound
-		feesh.init("right")
+		new_foosh.init("right")
 	
 	
 	pos_vector.y = round(rand_range(0,180))  # ints only muahaha
 	
 	print("Spawning at ", pos_vector)
-
-	feesh.change_pos(pos_vector)
-	add_child(feesh)
+	
+	new_foosh.change_speed(400.0)
+	new_foosh.change_pos(pos_vector)
+	add_child(new_foosh)
 
 
 
