@@ -32,6 +32,8 @@ func _physics_process(delta):
 	linear_velocity.x = 10*sin(2*time_since_last_cycle)
 	linear_velocity.y = -float_speed
 
+func change_position(new_position):
+	position = new_position
 
 func _on_bubble_pop(body):
 	print("Collided with ", body.name)

@@ -2,6 +2,7 @@ extends Node2D
 
 onready var globals = get_node("/root/Globals")
 onready var darkness = $Darkness
+var Bubble = preload("res://scenes/AirBubble.tscn")
 var Feesh = preload("res://scenes/Feesh.tscn")
 var Foosh = preload("res://scenes/Foosh.tscn")
 
@@ -14,6 +15,7 @@ func _ready():
 	# rng.randomize()  # enable this on release
 	# randomize()  # or this one
 	$SpawnTimer.connect("timeout",self,"_on_SpawnTimer_timeout")
+	$BubbleTimer.connect("timeout", self, "spawn_bubble")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,6 +33,12 @@ func _on_SpawnTimer_timeout():
 		spawn_feesh(Feesh)
 	else:
 		spawn_feesh(Foosh)
+
+func spawn_bubble():
+	var new_bubble = Bubble.instance()
+	var spawn_area = Vector2(rand_range(10, 310), 250 + globals.player["depth"])
+	new_bubble.change_position(spawn_area)
+	add_child(new_bubble)
 
 func spawn_feesh(feesh_type):
 	var random_float = randf()

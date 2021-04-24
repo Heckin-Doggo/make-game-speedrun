@@ -31,6 +31,10 @@ texture = ExtResource( 3 )
 wait_time = 0.5
 autostart = true
 
+[node name="BubbleTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HUD2" parent="CanvasLayer" instance=ExtResource( 4 )]
