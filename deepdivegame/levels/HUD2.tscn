@@ -35,6 +35,9 @@ margin_bottom = -6.0
 rect_rotation = 180.0
 rect_pivot_offset = Vector2( 4, 34 )
 color = Color( 0, 0.952941, 1, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Foreground" type="TextureRect" parent="OxygenDisplay"]
 margin_right = 16.0

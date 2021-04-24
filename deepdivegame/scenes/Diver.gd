@@ -42,9 +42,11 @@ func _physics_process(delta):
 	else:
 		$AnimatedSprite.animation = "idle"
 
+
 func _process(delta):
-	pass
-	
+	globals.player["depth"] = round(position.y)  # set it in globals
+
+
 func _on_BubbleTimer_timeout():
 	for i in range(3):
 		var bub = Bubble.instance()
