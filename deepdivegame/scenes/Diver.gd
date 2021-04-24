@@ -7,10 +7,13 @@ export var movespeed_y = 50
 
 var screen_size
 
+const Bubble = preload("res://scenes/Bubble.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimatedSprite.playing = true
 	screen_size = get_viewport_rect().size
+	$BubbleTimer.connect("timeout", self, "_on_BubbleTimer_timeout")
 
 
 # called every physics frame, which is before each drawn frame
@@ -38,3 +41,11 @@ func _physics_process(delta):
 
 func _process(delta):
 	pass
+	
+func _on_BubbleTimer_timeout():
+	for i in range(3):
+		print("bub")
+		var bub = Bubble.instance()
+		bub.update_pos(Vector2($Sprite.position.x, $Sprite.position.y-9))  # this makes it local
+		add_child(bub)
+		yield(get_tree().create_timer(0.3),"timeout")  # wait

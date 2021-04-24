@@ -11,7 +11,7 @@ script = ExtResource( 3 )
 position = Vector2( 160, 96 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 160, 152 )
+position = Vector2( 184, 152 )
 texture = ExtResource( 2 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
