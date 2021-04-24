@@ -36,8 +36,10 @@ func _physics_process(delta):
 	# animation
 	var flip = velocity.x < 0
 	$AnimatedSprite.flip_h = flip
-	# slow animation if not moving
-	if abs(velocity.x) > 0:
+	# idle animation if not moving
+	if velocity.y > 5:
+		$AnimatedSprite.animation = "swim_down"
+	elif abs(velocity.x) > 0:
 		$AnimatedSprite.animation = "swim_h"
 	else:
 		$AnimatedSprite.animation = "idle"
