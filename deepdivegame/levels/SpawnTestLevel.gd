@@ -5,6 +5,7 @@ onready var darkness = $Darkness
 var Bubble = preload("res://scenes/AirBubble.tscn")
 var Feesh = preload("res://scenes/Feesh.tscn")
 var Foosh = preload("res://scenes/Foosh.tscn")
+var Snark = preload("res://scenes/Snark.tscn")
 
 var x_bound = 320
 # var rng = RandomNumberGenerator.new()
@@ -29,10 +30,12 @@ func _process(delta):
 func _on_SpawnTimer_timeout():
 	var random_float = randf()
 	
-	if random_float < 0.5:
-		spawn_feesh(Feesh)
-	else:
+	if random_float < 0.3:
+		spawn_feesh(Snark)
+	elif random_float < 0.6:
 		spawn_feesh(Foosh)
+	else:
+		spawn_feesh(Feesh)
 
 func spawn_bubble():
 	var new_bubble = Bubble.instance()
