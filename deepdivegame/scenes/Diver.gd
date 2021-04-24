@@ -25,3 +25,15 @@ func _physics_process(delta):
 	velocity = move_and_slide(move_vector)
 	
 	position.x = clamp(position.x, 0, screen_size.x)
+	
+	# animation
+	var flip = velocity.x < 0
+	$AnimatedSprite.flip_h = flip
+	# slow animation if not moving
+	if abs(velocity.x) > 0:
+		$AnimatedSprite.speed_scale = 1
+	else:
+		$AnimatedSprite.speed_scale = .25
+
+func _process(delta):
+	pass

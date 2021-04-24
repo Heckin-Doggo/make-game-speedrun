@@ -19,9 +19,8 @@ __meta__ = {
 }
 
 [node name="Oxygen" type="VBoxContainer" parent="HBoxContainer"]
-margin_top = 64.0
 margin_right = 16.0
-margin_bottom = 244.0
+margin_bottom = 180.0
 
 [node name="OxygenFore" type="TextureRect" parent="HBoxContainer/Oxygen"]
 margin_right = 16.0
