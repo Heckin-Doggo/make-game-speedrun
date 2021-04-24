@@ -12,3 +12,4 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	$OxygenDisplay/FillBar.rect_size.y = globals.player["oxygen"]
+	$DepthGauge/Label.text = str(floor(globals.player["depth"]/10))
