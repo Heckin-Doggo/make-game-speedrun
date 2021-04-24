@@ -1,7 +1,7 @@
 extends KinematicBody2D
 class_name Feesh
 
-var speed = 2000
+var speed = 1500
 var velocity = Vector2.ZERO
 var side
 

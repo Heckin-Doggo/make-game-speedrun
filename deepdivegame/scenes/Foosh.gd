@@ -1,5 +1,6 @@
 extends Feesh
 
+var dash_speed = speed * 3
 var charge_direction = Vector2.ZERO
 var tired = false
 var state = SWIM
@@ -26,6 +27,8 @@ func player_lost(Player):
 	print("lost player")
 	if(tired == false):
 		state = CHARGE
+		charge_direction = (player.position - position).normalized()
+	player = null
 
 func _physics_process(delta):
 	match state:
@@ -40,7 +43,7 @@ func _physics_process(delta):
 			
 		CHARGE:
 			tired = true
-			charge_direction = (player.position - position).normalized()
 			velocity = charge_direction
-			speed = speed * 2
+			speed = dash_speed
+
 
