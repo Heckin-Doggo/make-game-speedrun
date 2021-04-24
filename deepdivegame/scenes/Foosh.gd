@@ -50,6 +50,5 @@ func _physics_process(delta):
 	position.y = clamp(position.y, 0, INF)
 
 func do_damage(body):
-	globals.player["oxygen"] -= 5
-	if(body.has_method("spawn_bubbles")):
-		body.spawn_bubbles(5, 0.1)
+	if(body.has_method("take_damage")):
+		body.take_damage()

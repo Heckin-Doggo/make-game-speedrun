@@ -2,7 +2,6 @@ extends KinematicBody2D
 class_name Feesh
 
 onready var damage_box = $Damagebox
-onready var globals = get_node("/root/Globals")
 var speed = 1500
 var velocity = Vector2.ZERO
 var side
@@ -35,8 +34,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
 
 func do_damage(body):
-	globals.player["oxygen"] -= 5
-	if(body.has_method("spawn_bubbles")):
-		body.spawn_bubbles(5, 0.1)
+	if(body.has_method("take_damage")):
+		body.take_damage()
 
 

@@ -6,6 +6,7 @@ onready var globals = get_node("/root/Globals")
 #variables
 export var movespeed_x = 50
 export var movespeed_y = 50
+var debounce = false
 
 var screen_size
 
@@ -62,3 +63,11 @@ func spawn_bubbles(bubble_count, bubble_time):
 		bub.update_pos(Vector2($Sprite.position.x, $Sprite.position.y-9))  # this makes it local
 		add_child(bub)
 		yield(get_tree().create_timer(bubble_time),"timeout")  # wait
+
+func take_damage():
+	if not debounce:
+		debounce = true
+		globals.player["oxygen"] -= 5
+		spawn_bubbles(5, 0.1)
+		yield(get_tree().create_timer(0.5),"timeout")
+		debounce = false
