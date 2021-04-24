@@ -24,6 +24,10 @@ config/name="DeepDiveGame"
 run/main_scene="res://levels/SpawnTestLevel.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Globals="*res://Globals.gd"
+
 [display]
 
 window/size/width=1280
