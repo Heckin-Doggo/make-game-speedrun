@@ -65,21 +65,27 @@ func summon_sploosh():
 
 func lose_top_right(body):
 	top_right_eye.get_child(0).disabled = true
-	
+	$TopRightEye2.visible = true
+
 func lose_top_left(body):
 	top_left_eye.get_child(0).disabled = true
+	$TopLeftEye2.visible = true
 
 func lose_mid_right(body):
 	mid_right_eye.get_child(0).disabled = true
-	
+	$MidRightEye2.visible = true
+
 func lose_mid_left(body):
 	mid_left_eye.get_child(0).disabled = true
-	
+	$MidLeftEye2.visible = true
+
 func lose_bot_right(body):
 	bot_right_eye.get_child(0).disabled = true
+	$BotRightEye2.visible = true
 
 func lose_bot_left(body):
 	bot_left_eye.get_child(0).disabled = true
+	$BotLeftEye2.visible = true
 
 func take_damage():
 	health -= 1

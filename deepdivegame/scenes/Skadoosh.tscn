@@ -1,9 +1,15 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://assets/Angler Boss Bright.png" type="Texture" id=1]
 [ext_resource path="res://assets/Light 25.png" type="Texture" id=2]
 [ext_resource path="res://scenes/Skadoosh.gd" type="Script" id=3]
 [ext_resource path="res://assets/Angler Boss Teeth.png" type="Texture" id=4]
+[ext_resource path="res://assets/midrighteye.png" type="Texture" id=5]
+[ext_resource path="res://assets/toplefteye.png" type="Texture" id=6]
+[ext_resource path="res://assets/midlefteye.png" type="Texture" id=7]
+[ext_resource path="res://assets/toprighteye.png" type="Texture" id=8]
+[ext_resource path="res://assets/botrighteye.png" type="Texture" id=9]
+[ext_resource path="res://assets/botlefteye.png" type="Texture" id=10]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -112,3 +118,27 @@ collision_mask = 0
 position = Vector2( -73.9789, 54.1263 )
 rotation = -0.254818
 shape = SubResource( 8 )
+
+[node name="TopRightEye2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 8 )
+
+[node name="TopLeftEye2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 6 )
+
+[node name="MidRightEye2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 5 )
+
+[node name="MidLeftEye2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 7 )
+
+[node name="BotRightEye2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 9 )
+
+[node name="BotLeftEye2" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 10 )
