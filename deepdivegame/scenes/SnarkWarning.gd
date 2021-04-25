@@ -6,6 +6,7 @@ var side
 func _ready():
 	$Timer.connect("timeout", self, "spawn_snark")
 	$Timer.start()
+	$Alarm.play()
 
 func spawn_snark():
 	print("Spawning Snark!")
