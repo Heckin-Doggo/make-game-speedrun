@@ -9,7 +9,7 @@
 [ext_resource path="res://assets/Explosion8.png" type="Texture" id=7]
 [ext_resource path="res://assets/Explosion9.png" type="Texture" id=8]
 [ext_resource path="res://assets/Explosion6.png" type="Texture" id=9]
-[ext_resource path="res://assets/Light 25%.png" type="Texture" id=10]
+[ext_resource path="res://assets/sounds/Explode.wav" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 18.5499
@@ -37,13 +37,10 @@ wait_time = 0.5
 one_shot = true
 autostart = true
 
-[node name="Light2D" type="Light2D" parent="."]
-texture = ExtResource( 10 )
-texture_scale = 2.0
-color = Color( 0.968627, 1, 0.8, 1 )
-energy = 2.0
-mode = 2
-
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "boom"
+
+[node name="ExplodeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+volume_db = -12.594

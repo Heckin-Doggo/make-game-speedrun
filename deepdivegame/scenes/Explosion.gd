@@ -10,6 +10,7 @@ func _ready():
 	explosion.connect("body_entered", self, "do_damage")
 	sprite.connect("animation_finished",self, "die")
 	sprite.play("boom")
+	$ExplodeSound.play()
 
 func do_damage(body):
 	if body.has_method("take_damage"):
