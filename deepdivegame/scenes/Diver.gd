@@ -81,7 +81,7 @@ func spawn_bubbles(bubble_count, bubble_time):
 	for i in range(bubble_count):
 		var bub = Bubble.instance()
 		bub.update_pos(Vector2($Sprite.position.x, $Sprite.position.y-9))  # this makes it local
-		add_child(bub)
+		call_deferred("add_child", bub)
 		yield(get_tree().create_timer(bubble_time),"timeout")  # wait
 
 func take_damage():

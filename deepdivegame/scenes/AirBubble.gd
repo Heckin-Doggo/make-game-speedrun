@@ -45,7 +45,7 @@ func _on_bubble_pop(body):
 		for i in range(5):
 			var bub = Bubble.instance()
 			bub.update_pos(Vector2($Sprite.position.x+randf(), $Sprite.position.y-9))  # this makes it local
-			body.add_child(bub)
+			body.call_deferred("add_child", bub)
 			yield(get_tree().create_timer(0.01),"timeout")  # wait
 		
 		$BubblePop.play()
