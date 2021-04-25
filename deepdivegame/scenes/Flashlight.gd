@@ -29,4 +29,7 @@ func _on_collect(body):
 		debounce = true
 		globals.powerups["flashlight"] = clamp(globals.powerups["flashlight"]+flashlight_boost, 0, 7)  # 7 is fl max
 		
+		$FlashlightSound.play()
+		visible = false
+		yield($FlashlightSound, "finished")
 		queue_free()
