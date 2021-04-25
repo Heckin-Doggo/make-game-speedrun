@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/Explosion.gd" type="Script" id=1]
 [ext_resource path="res://assets/Explosion5.png" type="Texture" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/Explosion9.png" type="Texture" id=8]
 [ext_resource path="res://assets/Explosion6.png" type="Texture" id=9]
 [ext_resource path="res://assets/sounds/Explode.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/Light 25.png" type="Texture" id=11]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 18.5499
@@ -44,3 +45,8 @@ animation = "boom"
 [node name="ExplodeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
 volume_db = -12.594
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 11 )
+texture_scale = 2.0
+energy = 2.0

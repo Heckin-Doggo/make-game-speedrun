@@ -5,7 +5,7 @@ onready var globals = get_node("/root/Globals")
 
 #variables
 export var movespeed_x = 50
-export var movespeed_y = 100
+export var movespeed_y = 50
 var top_limit = 0
 var debounce = false
 

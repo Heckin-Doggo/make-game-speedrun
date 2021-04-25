@@ -9,6 +9,7 @@ var Foosh = preload("res://scenes/Foosh.tscn")
 var Warning = preload("res://scenes/SnarkWarning.tscn")
 var Gloosh = preload("res://scenes/Gloosh.tscn")
 var Sploosh = preload("res://scenes/Sploosh.tscn")
+var Kaboosh = preload("res://scenes/Kaboosh.tscn")
 var stop_spawns = false
 var boss_started = false
 
@@ -72,19 +73,11 @@ func _on_SpawnTimer_timeout():
 			spawn_section4(random_float)
 		else:
 			stop_spawns = true
-			print("boss area")
-	
+	elif boss_started:
+		var random_float = randf()
+		if random_float < 0.05:
+			spawn_gloosh(Kaboosh)
 
-#	if random_float < 0.2:
-#		spawn_snark()
-#	elif random_float < 0.4:
-#		spawn_feesh(Foosh)
-#	elif random_float < 0.6:
-#		spawn_feesh(Feesh)
-#	elif random_float < 0.8:
-#		spawn_gloosh()
-#	else:
-#		spawn_feesh(Sploosh)
 
 func spawn_section1(randnum):
 	if randnum < 0.5:
@@ -106,7 +99,7 @@ func spawn_section3(randnum):
 	elif randnum < 0.4:
 		spawn_feesh(Foosh)
 	elif randnum < 0.6:
-		spawn_gloosh()
+		spawn_gloosh(Gloosh)
 	else:
 		spawn_feesh(Feesh)
 
@@ -116,7 +109,7 @@ func spawn_section4(randnum):
 	elif randnum < 0.4:
 		spawn_feesh(Foosh)
 	elif randnum < 0.6:
-		spawn_gloosh()
+		spawn_gloosh(Gloosh)
 	elif randnum < 0.8:
 		spawn_snark()
 	else:
@@ -138,7 +131,7 @@ func roll_flashlight():
 	if chance > .71: 
 		#print("--- FLASHLIGHT SPAWNED!!")
 		spawn_flashlight()
-	
+
 
 func spawn_flashlight():
 	var new_fl = Flashlight.instance()
@@ -179,10 +172,24 @@ func spawn_snark():
 	new_warning.set_position(warning_spot)
 	add_child(new_warning)
 
-func spawn_gloosh():
-	var new_gloosh = Gloosh.instance()
+func spawn_gloosh(gloosh_type):
+	var new_gloosh = gloosh_type.instance()
 	var spawn_position = Vector2.ZERO
-	spawn_position.y = globals.player["depth"] + 100
-	spawn_position.x = rand_range(10, 310)
+	if not boss_started:
+		spawn_position.y = globals.player["depth"] + 150
+		spawn_position.x = rand_range(10, 310)
+		if spawn_position.x < 155:
+			new_gloosh.set_side("left")
+		else:
+			new_gloosh.set_side("right")
+	else:
+		var randnum = randf()
+		spawn_position.y = globals.player["depth"]
+		if randnum < 0.5:
+			spawn_position.x = 0
+			new_gloosh.set_side("left")
+		else:
+			spawn_position.x = 320
+			new_gloosh.set_side("right")
 	new_gloosh.set_position(spawn_position)
 	add_child(new_gloosh)
