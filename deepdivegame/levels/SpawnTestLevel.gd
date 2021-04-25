@@ -32,16 +32,16 @@ func _process(delta):
 func _on_SpawnTimer_timeout():
 	var random_float = randf()
 	
-	if random_float < 0.2:
-		spawn_snark()
-	elif random_float < 0.4:
-		spawn_feesh(Foosh)
-	elif random_float < 0.6:
-		spawn_feesh(Feesh)
-	elif random_float < 0.8:
-		spawn_gloosh()
-	else:
-		spawn_feesh(Sploosh)
+#	if random_float < 0.2:
+#		spawn_snark()
+#	elif random_float < 0.4:
+#		spawn_feesh(Foosh)
+#	elif random_float < 0.6:
+#		spawn_feesh(Feesh)
+#	elif random_float < 0.8:
+#		spawn_gloosh()
+#	else:
+#		spawn_feesh(Sploosh)
 
 
 func spawn_bubble():
