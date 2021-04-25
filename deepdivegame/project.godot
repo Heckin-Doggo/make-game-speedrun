@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Feesh",
 "language": "GDScript",
 "path": "res://scenes/Feesh.gd"
+}, {
+"base": "RigidBody2D",
+"class": "Gloosh",
+"language": "GDScript",
+"path": "res://scenes/Gloosh.gd"
 } ]
 _global_script_class_icons={
-"Feesh": ""
+"Feesh": "",
+"Gloosh": ""
 }
 
 [application]

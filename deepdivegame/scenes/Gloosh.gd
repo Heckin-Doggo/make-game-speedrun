@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name Gloosh
 
 onready var vis_notif = $VisibilityNotifier2D
 var swim_speed
