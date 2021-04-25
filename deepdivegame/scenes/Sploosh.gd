@@ -55,7 +55,7 @@ func shoot():
 	get_parent().add_child(new_splooshpellet)
 
 func found_player(player):
-	print("found player")
+	# print("found player")
 	player_target = player
 	state = SHOOT
 

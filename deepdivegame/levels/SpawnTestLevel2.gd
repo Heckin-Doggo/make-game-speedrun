@@ -33,7 +33,7 @@ func _process(delta):
 # handles spawning
 func _on_SpawnTimer_timeout():
 	var random_float = randf()
-
+	
 #	if random_float < 0.2:
 #		spawn_snark()
 #	elif random_float < 0.4:
@@ -70,6 +70,7 @@ func spawn_flashlight():
 	new_fl.change_position(spawn_area)
 	print("SPAWNED AT: ", spawn_area.y/10)
 	add_child(new_fl)
+
 
 func spawn_feesh(feesh_type):
 	var random_float = randf()
