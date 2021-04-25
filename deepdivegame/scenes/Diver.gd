@@ -83,6 +83,7 @@ func spawn_bubbles(bubble_count, bubble_time):
 func take_damage():
 	if not debounce:
 		debounce = true
+		$DamageSound.play()
 		globals.player["oxygen"] -= 5
 		spawn_bubbles(5, 0.1)
 		yield(get_tree().create_timer(0.5),"timeout")

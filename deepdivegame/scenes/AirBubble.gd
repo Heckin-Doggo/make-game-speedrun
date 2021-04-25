@@ -48,4 +48,7 @@ func _on_bubble_pop(body):
 			body.add_child(bub)
 			yield(get_tree().create_timer(0.01),"timeout")  # wait
 		
+		$BubblePop.play()
+		visible = false
+		yield($BubblePop, "finished")
 		queue_free()
