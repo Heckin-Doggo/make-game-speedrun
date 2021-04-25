@@ -67,7 +67,7 @@ func spawn_snark():
 	var warning_spot = Vector2.ZERO
 	if random_float < 0.5:
 		new_warning.set_side("left")
-		warning_spot.x = 25
+		warning_spot.x = 40
 	else:
 		new_warning.set_side("right")
 		warning_spot.x = 310
