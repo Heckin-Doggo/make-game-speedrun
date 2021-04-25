@@ -20,6 +20,8 @@ func spawn_snark():
 
 func set_side(spawn_side):
 	side = spawn_side
+	if side == "left":
+		$Sprite.flip_h = true
 
 func set_position(spawn_position):
 	position = spawn_position
