@@ -34,4 +34,6 @@ collision_layer = 2
 rotation = 1.5708
 scale = Vector2( 0.55, 0.5 )
 shape = SubResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 [connection signal="body_entered" from="Damagebox" to="." method="_on_Damagebox_body_entered"]

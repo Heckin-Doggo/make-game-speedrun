@@ -1,6 +1,7 @@
 extends KinematicBody2D
 class_name Feesh
 
+onready var vis_notif = $VisibilityNotifier2D
 onready var damage_box = $Damagebox
 var speed = 1500
 var velocity = Vector2.ZERO
@@ -8,6 +9,8 @@ var side
 
 func _ready():
 	damage_box.connect("body_entered", self, "do_damage")
+	vis_notif.connect("screen_exited", self, "despawn")
+	
 
 func _physics_process(delta):
 	move_and_slide(velocity * speed * delta)
@@ -29,7 +32,7 @@ func change_pos(pos : Vector2):
 	position.x = pos.x
 	position.y = pos.y
 
-func _on_VisibilityNotifier2D_screen_exited():
+func despawn():
 	print("despawning")
 	queue_free()
 
