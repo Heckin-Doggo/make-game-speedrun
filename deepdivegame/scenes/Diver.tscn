@@ -35,7 +35,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 6, 6 )
+extents = Vector2( 4, 4 )
 
 [node name="Diver" type="KinematicBody2D"]
 collision_mask = 9
@@ -43,8 +43,7 @@ script = ExtResource( 2 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "idle"
-frame = 1
+animation = "swim_h"
 
 [node name="Sprite" type="Sprite" parent="."]
 visible = false

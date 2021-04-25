@@ -38,7 +38,7 @@ func appear(body):
 
 func attack_cycle():
 	while true:
-		snark_attack_walls()
+		snark_attack_walls(4)
 		yield(get_tree().create_timer(5),"timeout")
 		summon_sploosh()
 		yield(get_tree().create_timer(10),"timeout")
@@ -46,8 +46,8 @@ func attack_cycle():
 		snark_attack_wave()
 		yield(get_tree().create_timer(5),"timeout")
 
-func snark_attack_walls():
-	for x in range(0, 4):
+func snark_attack_walls(wall_count):
+	for x in range(0, wall_count):
 		var snark1 = Warning.instance()
 		var snark2 = Warning.instance()
 		var snark3 = Warning.instance()
@@ -56,20 +56,20 @@ func snark_attack_walls():
 		var snark6 = Warning.instance()
 		var snark_list = [snark1, snark2, snark3, snark4, snark5, snark6]
 		var start = 10000
-		if x == 0 or x == 2:
+		if x % 2 == 0:
 			for snark in snark_list:
 				snark.set_side("left")
 				snark.set_position(Vector2(40, start))
 				start = start - 40
 				get_parent().add_child(snark)
-		elif x == 1 or x == 3:
+		elif x % 2 == 1:
 			start = start - 20
 			for snark in snark_list:
 				snark.set_side("right")
 				snark.set_position(Vector2(310, start))
 				start = start - 40
 				get_parent().add_child(snark)
-		yield(get_tree().create_timer(0.6),"timeout")
+		yield(get_tree().create_timer(0.8),"timeout")
 
 func snark_attack_wave():
 	for x in range(0, 6):
