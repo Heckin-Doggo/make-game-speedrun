@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://scenes/Skadoosh.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sounds/DDG-TheDive.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/DeepDiveBackground.png" type="Texture" id=9]
+[ext_resource path="res://scenes/Kaboosh.tscn" type="PackedScene" id=10]
 
 [node name="SpawnTestLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -26,7 +27,7 @@ position = Vector2( 160, 9910 )
 texture = ExtResource( 9 )
 
 [node name="Diver" parent="." instance=ExtResource( 2 )]
-position = Vector2( 157.141, 9287.9 )
+position = Vector2( 169.7, 9891.57 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -54,3 +55,6 @@ autoplay = true
 
 [node name="FlashlightTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="Kaboosh" parent="." instance=ExtResource( 10 )]
+position = Vector2( 222.867, 9912.36 )
