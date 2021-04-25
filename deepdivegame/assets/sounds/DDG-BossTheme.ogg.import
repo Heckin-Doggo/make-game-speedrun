@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/DDG-BossTheme.ogg-794be1a0c70da4fa8ac1eb1eaee30b44.oggstr"
+
+[deps]
+
+source_file="res://assets/sounds/DDG-BossTheme.ogg"
+dest_files=[ "res://.import/DDG-BossTheme.ogg-794be1a0c70da4fa8ac1eb1eaee30b44.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
