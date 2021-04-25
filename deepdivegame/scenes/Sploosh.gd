@@ -3,8 +3,10 @@ extends Feesh
 var Splooshpellet = preload("res://scenes/Splooshpellet.tscn")
 onready var player_detector = $Playerdetector
 onready var personal_bubble = $Personalbubble
+onready var shoot_timer = $ShootTimer
 var state = SWIM
 var player_target
+var can_shoot = true
 
 enum{
 	SWIM,
@@ -13,6 +15,7 @@ enum{
 }
 
 func _ready():
+	shoot_timer.connect("timeout", self, "allow_shoot")
 	player_detector.connect("body_entered", self, "found_player")
 	player_detector.connect("body_exited", self, "lose_player")
 	personal_bubble.connect("body_entered", self, "run")
@@ -27,13 +30,17 @@ func _physics_process(delta):
 				velocity = Vector2(-1, 0)
 		SHOOT:
 			velocity = Vector2.ZERO
-			shoot()
+			if can_shoot:
+				shoot()
+				can_shoot = false
+				shoot_timer.start()
+			
 		RUN:
 			velocity = (player_target.position - position).normalized() * -1
 
 func shoot():
 	var new_splooshpellet = Splooshpellet.instance()
-	new_splooshpellet.init(player_target.position - position, position, 4000)
+	new_splooshpellet.init(player_target.position - position, position, 700)
 	add_child(new_splooshpellet)
 
 func found_player(player):
@@ -51,3 +58,6 @@ func lose_player(player):
 	
 func has_room(player):
 	state = SHOOT
+
+func allow_shoot():
+	can_shoot = true

@@ -8,6 +8,7 @@ radius = 2.38669
 
 [node name="Splooshpellet" type="RigidBody2D"]
 collision_layer = 4
+gravity_scale = 0.0
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
