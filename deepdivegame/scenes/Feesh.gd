@@ -14,10 +14,7 @@ func _ready():
 
 func _physics_process(delta):
 	move_and_slide(velocity * speed * delta)
-	if(velocity.x > 0):
-		get_node("Sprite").flip_h = true
-	else:
-		get_node("Sprite").flip_h = false
+	flip()
 	position.y = clamp(position.y, 0, INF)
 
 func init(direction):
@@ -39,4 +36,8 @@ func do_damage(body):
 	if(body.has_method("take_damage")):
 		body.take_damage()
 
-
+func flip():
+	if velocity.x > 0:
+		$Sprite.flip_h = true
+	else:
+		$Sprite.flip_h = false

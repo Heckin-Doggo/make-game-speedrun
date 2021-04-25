@@ -39,9 +39,20 @@ func _physics_process(delta):
 			velocity = (player_target.position - position).normalized() * -1
 
 func shoot():
+	print(position)
 	var new_splooshpellet = Splooshpellet.instance()
-	new_splooshpellet.init(player_target.position - position, position, 700)
-	add_child(new_splooshpellet)
+	var offset = -12
+	if player_target.position.x - position.x > 0:
+		offset = offset * -1
+		$Sprite.flip_h = true
+	else:
+		$Sprite.flip_h = false
+	
+	var target = Vector2((player_target.position.x + offset) - (position.x + offset), player_target.position.y - position.y)
+	var spawn_position = Vector2(position.x + offset, position.y)
+	
+	new_splooshpellet.init(target, spawn_position, 50)
+	get_parent().add_child(new_splooshpellet)
 
 func found_player(player):
 	print("found player")
@@ -61,3 +72,10 @@ func has_room(player):
 
 func allow_shoot():
 	can_shoot = true
+
+func flip():
+	if state != SHOOT:
+		if velocity.x > 0:
+			$Sprite.flip_h = true
+		else:
+			$Sprite.flip_h = false

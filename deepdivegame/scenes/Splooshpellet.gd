@@ -1,20 +1,16 @@
 extends RigidBody2D
 
-signal bullet_hit
-
+onready var hitbox = $Hitbox
 var velocity = Vector2.ZERO
 
-func init(vel, pos, speed):
-	velocity = vel.normalized() * speed
-	position = pos
-
 func _ready():
-	set_linear_velocity(velocity)
-	self.connect("body_entered", self, "_onSplooshpellet_body_entered")
+	hitbox.connect("body_entered", self, "hit")
 
-func _on_Splooshpellet_body_entered(object):
-	if(object.has_method("take_damage")):
-		object.take_damage()
+func init(dir, pos, speed):
+	position = pos
+	linear_velocity = dir.normalized() * speed
 
-func _on_Despawntimer_timeout():
+func hit(body):
+	if body.has_method("take_damage"):
+		body.take_damage()
 	queue_free()
