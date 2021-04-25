@@ -6,9 +6,23 @@ var Warning = preload("res://scenes/SnarkWarning.tscn")
 onready var tween = $Tween
 onready var lure = $Area2D
 var appeared = false
+var health = 6
+
+onready var top_right_eye = $TopRightEye
+onready var top_left_eye = $TopLeftEye
+onready var mid_right_eye = $MidRightEye
+onready var mid_left_eye = $MidLeftEye
+onready var bot_right_eye = $BotRightEye
+onready var bot_left_eye = $BotLeftEye
 
 func _ready():
 	lure.connect("body_entered", self, "appear")
+	top_right_eye.connect("area_entered", self, "lose_top_right")
+	top_left_eye.connect("area_entered", self, "lose_top_left")
+	mid_right_eye.connect("area_entered", self, "lose_mid_right")
+	mid_left_eye.connect("area_entered", self, "lose_mid_left")
+	bot_right_eye.connect("area_entered", self, "lose_bot_right")
+	bot_left_eye.connect("area_entered", self, "lose_bot_left")
 
 func appear(body):
 	if not appeared:
@@ -46,3 +60,24 @@ func summon_sploosh():
 	new_sploosh2.change_pos(Vector2(320, globals.player["depth"]))
 	get_parent().add_child(new_sploosh1)
 	get_parent().add_child(new_sploosh2)
+
+func lose_top_right(body):
+	top_right_eye.get_child(0).disabled = true
+	
+func lose_top_left(body):
+	top_left_eye.get_child(0).disabled = true
+
+func lose_mid_right(body):
+	mid_right_eye.get_child(0).disabled = true
+	
+func lose_mid_left(body):
+	mid_left_eye.get_child(0).disabled = true
+	
+func lose_bot_right(body):
+	bot_right_eye.get_child(0).disabled = true
+
+func lose_bot_left(body):
+	bot_left_eye.get_child(0).disabled = true
+
+func take_damage():
+	health -= 1
