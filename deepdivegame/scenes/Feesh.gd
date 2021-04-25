@@ -6,6 +6,7 @@ onready var damage_box = $Damagebox
 var speed = 1500
 var velocity = Vector2.ZERO
 var side
+var runaway = false
 
 func _ready():
 	damage_box.connect("body_entered", self, "do_damage")
@@ -16,6 +17,7 @@ func _physics_process(delta):
 	move_and_slide(velocity * speed * delta)
 	flip()
 	position.y = clamp(position.y, 0, INF)
+	
 
 func init(direction):
 	if(direction == "left"):
@@ -41,3 +43,8 @@ func flip():
 		$Sprite.flip_h = true
 	else:
 		$Sprite.flip_h = false
+
+func run_away():
+	runaway = true
+	speed = speed * 2
+		

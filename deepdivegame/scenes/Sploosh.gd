@@ -55,20 +55,21 @@ func shoot():
 	get_parent().add_child(new_splooshpellet)
 
 func found_player(player):
-	# print("found player")
-	player_target = player
-	state = SHOOT
+	if not runaway:
+		player_target = player
+		state = SHOOT
 
 func run(player):
-	print("running from player")
-	state = RUN
+	if not runaway:
+		state = RUN
 
 func lose_player(player):
 	state = SWIM
 	player_target = null
 	
 func has_room(player):
-	state = SHOOT
+	if not runaway:
+		state = SHOOT
 
 func allow_shoot():
 	can_shoot = true

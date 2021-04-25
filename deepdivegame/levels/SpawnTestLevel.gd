@@ -9,6 +9,7 @@ var Foosh = preload("res://scenes/Foosh.tscn")
 var Warning = preload("res://scenes/SnarkWarning.tscn")
 var Gloosh = preload("res://scenes/Gloosh.tscn")
 var Sploosh = preload("res://scenes/Sploosh.tscn")
+var stop_spawns = false
 
 var x_bound = 320
 # var rng = RandomNumberGenerator.new()
@@ -25,14 +26,36 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	var color_value = 1 - (globals.player["depth"] * .0005)
+	var color_value = 1 - (globals.player["depth"] * .0002)
 	var color = Color.from_hsv(0, 0, color_value)
 	darkness.set_color(color)
+	if globals.player["depth"] > 9940:
+		call_runaway()
 
+func call_runaway():
+	for object in self.get_children():
+		if object.has_method("run_away"):
+			object.run_away()
 
 # handles spawning
 func _on_SpawnTimer_timeout():
-	var random_float = randf()
+	if not stop_spawns:
+		var random_float = randf()
+		if globals.player["depth"] < 1000:
+			spawn_section1(random_float)
+		elif globals.player["depth"] < 3000:
+			print("spawning 2")
+			spawn_section2(random_float)
+		elif globals.player["depth"] < 6000:
+			print("spawning 3")
+			spawn_section3(random_float)
+		elif globals.player["depth"] < 10000 - 60:
+			print("spawning 4")
+			spawn_section4(random_float)
+		else:
+			stop_spawns = true
+			print("boss area")
+	
 
 #	if random_float < 0.2:
 #		spawn_snark()
@@ -45,6 +68,41 @@ func _on_SpawnTimer_timeout():
 #	else:
 #		spawn_feesh(Sploosh)
 
+func spawn_section1(randnum):
+	if randnum < 0.5:
+		spawn_feesh(Foosh)
+	else:
+		spawn_feesh(Feesh)
+
+func spawn_section2(randnum):
+	if randnum < 0.3:
+		spawn_feesh(Sploosh)
+	elif randnum < 0.6:
+		spawn_feesh(Foosh)
+	else:
+		spawn_feesh(Feesh)
+		
+func spawn_section3(randnum):
+	if randnum < 0.2:
+		spawn_feesh(Sploosh)
+	elif randnum < 0.4:
+		spawn_feesh(Foosh)
+	elif randnum < 0.6:
+		spawn_gloosh()
+	else:
+		spawn_feesh(Feesh)
+
+func spawn_section4(randnum):
+	if randnum < 0.2:
+		spawn_feesh(Sploosh)
+	elif randnum < 0.4:
+		spawn_feesh(Foosh)
+	elif randnum < 0.6:
+		spawn_gloosh()
+	elif randnum < 0.8:
+		spawn_snark()
+	else:
+		spawn_feesh(Feesh)
 
 func spawn_bubble():
 	var new_bubble = Bubble.instance()
