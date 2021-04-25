@@ -5,8 +5,10 @@ onready var explosion = $Area2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	timer.connect("timeout", self, "die")
+	# timer.connect("timeout", self, "die")
 	explosion.connect("body_entered", self, "do_damage")
+	$AnimatedSprite.play()
+	$AnimatedSprite.connect("animation_finished", self, "die")
 
 func do_damage(body):
 	if body.has_method("take_damage"):
