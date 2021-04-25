@@ -10,6 +10,7 @@ var Warning = preload("res://scenes/SnarkWarning.tscn")
 var Gloosh = preload("res://scenes/Gloosh.tscn")
 var Sploosh = preload("res://scenes/Sploosh.tscn")
 var stop_spawns = false
+var boss_started = false
 
 var x_bound = 320
 # var rng = RandomNumberGenerator.new()
@@ -29,7 +30,8 @@ func _process(delta):
 	var color_value = 1 - (globals.player["depth"] * .0002)
 	var color = Color.from_hsv(0, 0, color_value)
 	darkness.set_color(color)
-	if globals.player["depth"] > 9940:
+	if globals.player["depth"] > 9940 and not boss_started:
+		boss_started = true
 		call_runaway()
 
 func call_runaway():
