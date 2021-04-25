@@ -5,7 +5,7 @@ onready var darkness = $Darkness
 var Bubble = preload("res://scenes/AirBubble.tscn")
 var Feesh = preload("res://scenes/Feesh.tscn")
 var Foosh = preload("res://scenes/Foosh.tscn")
-var Snark = preload("res://scenes/Snark.tscn")
+var Warning = preload("res://scenes/SnarkWarning.tscn")
 
 var x_bound = 320
 # var rng = RandomNumberGenerator.new()
@@ -31,7 +31,7 @@ func _on_SpawnTimer_timeout():
 	var random_float = randf()
 	
 	if random_float < 0.3:
-		spawn_feesh(Snark)
+		spawn_snark()
 	elif random_float < 0.6:
 		spawn_feesh(Foosh)
 	else:
@@ -60,3 +60,17 @@ func spawn_feesh(feesh_type):
 
 	new_feesh.change_pos(pos_vector)
 	add_child(new_feesh)
+
+func spawn_snark():
+	var new_warning = Warning.instance()
+	var random_float = randf()
+	var warning_spot = Vector2.ZERO
+	if random_float < 0.5:
+		new_warning.set_side("left")
+		warning_spot.x = 25
+	else:
+		new_warning.set_side("right")
+		warning_spot.x = 310
+	warning_spot.y = globals.player["depth"]
+	new_warning.set_position(warning_spot)
+	add_child(new_warning)
