@@ -30,6 +30,8 @@ func _physics_process(delta):
 				velocity = Vector2(-1, 0)
 		SHOOT:
 			velocity = Vector2.ZERO
+			if runaway:
+				state = SWIM
 			if can_shoot:
 				shoot()
 				can_shoot = false
@@ -37,6 +39,8 @@ func _physics_process(delta):
 			
 		RUN:
 			velocity = (player_target.position - position).normalized() * -1
+			if runaway:
+				state = SWIM
 
 func shoot():
 	print(position)

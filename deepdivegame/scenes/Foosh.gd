@@ -40,7 +40,8 @@ func _physics_process(delta):
 				
 		TARGET_PLAYER:
 			velocity = (player_target.position - position).normalized()
-			
+			if runaway:
+				state = SWIM
 		CHARGE:
 			tired = true
 			velocity = charge_direction

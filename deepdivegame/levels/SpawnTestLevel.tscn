@@ -26,7 +26,7 @@ position = Vector2( 160, 9910 )
 texture = ExtResource( 9 )
 
 [node name="Diver" parent="." instance=ExtResource( 2 )]
-position = Vector2( 117.141, 8791.9 )
+position = Vector2( 157.141, 9287.9 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5

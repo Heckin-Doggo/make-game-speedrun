@@ -4,6 +4,7 @@ class_name Feesh
 onready var vis_notif = $VisibilityNotifier2D
 onready var damage_box = $Damagebox
 var speed = 1500
+var run_speed = speed * 4
 var velocity = Vector2.ZERO
 var side
 var runaway = false
@@ -46,5 +47,6 @@ func flip():
 
 func run_away():
 	runaway = true
-	speed = speed * 2
-		
+	speed = run_speed
+	get_node("Damagebox/CollisionShape2D").disabled = true
+	get_node("CollisionShape2D").disabled = true
