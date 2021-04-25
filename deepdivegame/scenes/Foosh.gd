@@ -17,7 +17,6 @@ enum{
 func _ready():
 	detection_box.connect("body_entered", self, "player_detected")
 	detection_box.connect("body_exited", self, "player_lost")
-	dmg_box.connect("body_entered", self, "do_damage")
 
 func player_detected(player):
 	print("found player")
@@ -49,6 +48,3 @@ func _physics_process(delta):
 			speed = dash_speed
 	position.y = clamp(position.y, 0, INF)
 
-func do_damage(body):
-	if(body.has_method("take_damage")):
-		body.take_damage()
