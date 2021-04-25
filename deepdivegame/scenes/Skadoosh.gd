@@ -34,10 +34,14 @@ func appear(body):
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
 		tween.start()
 		appeared = true
-		yield(get_tree().create_timer(1),"timeout")
-		snark_attack()
-		yield(get_tree().create_timer(5),"timeout")
-		summon_sploosh()
+		attack_cycle()
+
+func attack_cycle():
+	snark_attack()
+	yield(get_tree().create_timer(5),"timeout")
+	summon_sploosh()
+	yield(get_tree().create_timer(10),"timeout")
+	get_parent().call_runaway()
 
 func snark_attack():
 	for x in range(0, 6):
