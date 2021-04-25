@@ -36,7 +36,7 @@ func change_position(new_position):
 	position = new_position
 
 func _on_bubble_pop(body):
-	print("Collided with ", body.name)
+	#print("Collided with ", body.name)
 	if not debounce and body.name == "Diver":
 		debounce = true
 		globals.player["oxygen"] = clamp(globals.player["oxygen"]+oxygen_boost, 20, 68)  # 68 is o2 tank size

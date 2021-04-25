@@ -59,7 +59,7 @@ func _process(delta):
 		if !$FlashLightTimer.is_stopped():
 			$FlashLightTimer.stop()
 		$Light2D.texture_scale = 1
-	if globals.player["depth"] == 10000:
+	if globals.player["depth"] == 10000 - 60:
 		$Camera2D.limit_top = 10000-170
 		top_limit = 10000-163
 

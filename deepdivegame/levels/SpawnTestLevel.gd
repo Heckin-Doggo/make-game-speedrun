@@ -58,9 +58,9 @@ func roll_flashlight():
 	var depth = globals.player["depth"]
 	var cur_fl_level = globals.powerups["flashlight"]
 	var chance = random_float + (depth/10000)/2 - (cur_fl_level/7)*.8  # chance goes up with depth, down with battery
-	print("RF: ", random_float, " -- CHANCE: ", chance)
+	#print("RF: ", random_float, " -- CHANCE: ", chance)
 	if chance > .71: 
-		print("--- FLASHLIGHT SPAWNED!!")
+		#print("--- FLASHLIGHT SPAWNED!!")
 		spawn_flashlight()
 	
 
@@ -68,7 +68,7 @@ func spawn_flashlight():
 	var new_fl = Flashlight.instance()
 	var spawn_area = Vector2(rand_range(50, 320-50), 250 + globals.player["depth"])
 	new_fl.change_position(spawn_area)
-	print("SPAWNED AT: ", spawn_area.y/10)
+	#print("SPAWNED AT: ", spawn_area.y/10)
 	add_child(new_fl)
 
 func spawn_feesh(feesh_type):
