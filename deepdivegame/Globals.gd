@@ -10,3 +10,5 @@ var player = {
 var powerups = {
 	"flashlight": 0
 }
+
+var music = "normal"
