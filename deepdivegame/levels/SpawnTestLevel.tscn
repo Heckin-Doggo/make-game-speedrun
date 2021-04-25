@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -10,6 +10,8 @@
 [ext_resource path="res://assets/sounds/DDG-TheDive.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/DeepDiveBackground.png" type="Texture" id=9]
 [ext_resource path="res://scenes/Kaboosh.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/sounds/DDG-BossSting2.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/DDG-BossTheme.ogg" type="AudioStream" id=12]
 
 [node name="SpawnTestLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -58,3 +60,9 @@ autostart = true
 
 [node name="Kaboosh" parent="." instance=ExtResource( 10 )]
 position = Vector2( 222.867, 9912.36 )
+
+[node name="BossSting" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )

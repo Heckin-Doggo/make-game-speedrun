@@ -27,9 +27,11 @@ func _ready():
 func appear(body):
 	if not appeared:
 		print("Appearing")
+		# Change Music
+		globals.music = "sting"
 		tween.interpolate_property(self, "position",
 		position, Vector2(position.x, position.y - 120), 1,
-		Tween.TRANS_LINEAR, Tween.EASE_OUT)
+		Tween.TRANS_QUAD, Tween.EASE_OUT)
 		tween.start()
 		appeared = true
 		yield(get_tree().create_timer(1),"timeout")

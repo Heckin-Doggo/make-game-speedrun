@@ -12,6 +12,8 @@ var Sploosh = preload("res://scenes/Sploosh.tscn")
 var stop_spawns = false
 var boss_started = false
 
+var current_song = "normal"
+
 var x_bound = 320
 # var rng = RandomNumberGenerator.new()
 
@@ -23,6 +25,7 @@ func _ready():
 	$SpawnTimer.connect("timeout",self,"_on_SpawnTimer_timeout")
 	$BubbleTimer.connect("timeout", self, "spawn_bubble")
 	$FlashlightTimer.connect("timeout", self, "roll_flashlight")
+	current_song = globals.music
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,6 +36,19 @@ func _process(delta):
 	if globals.player["depth"] > 9940 and not boss_started:
 		boss_started = true
 		call_runaway()
+
+	# Music Handler
+	if current_song != globals.music:
+		current_song = globals.music
+		if current_song == "normal":
+			$BossMusic.stop()
+			$Music.play()
+		elif current_song == "sting":
+			$Music.stop()
+			$BossSting.play()
+			yield($BossSting, "finished")
+			$BossMusic.play()
+			current_song == "boss"
 
 func call_runaway():
 	for object in self.get_children():
