@@ -7,6 +7,7 @@ var Feesh = preload("res://scenes/Feesh.tscn")
 var Foosh = preload("res://scenes/Foosh.tscn")
 var Warning = preload("res://scenes/SnarkWarning.tscn")
 var Gloosh = preload("res://scenes/Gloosh.tscn")
+var Sploosh = preload("res://scenes/Sploosh.tscn")
 
 var x_bound = 320
 # var rng = RandomNumberGenerator.new()
@@ -31,14 +32,17 @@ func _process(delta):
 func _on_SpawnTimer_timeout():
 	var random_float = randf()
 	
-	if random_float < 0.3:
+	if random_float < 0.2:
 		spawn_snark()
-	elif random_float < 0.6:
+	elif random_float < 0.4:
 		spawn_feesh(Foosh)
-	else:
+	elif random_float < 0.6:
 		spawn_feesh(Feesh)
-	if(random_float < 0.2):
+	elif random_float < 0.8:
 		spawn_gloosh()
+	else:
+		spawn_feesh(Sploosh)
+
 
 func spawn_bubble():
 	var new_bubble = Bubble.instance()

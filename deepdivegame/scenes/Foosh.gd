@@ -19,13 +19,11 @@ func _ready():
 	detection_box.connect("body_exited", self, "player_lost")
 
 func player_detected(player):
-	print("found player")
 	if(tired == false):
 		state = TARGET_PLAYER
 		player_target = player
 
 func player_lost(player):
-	print("lost player")
 	if(tired == false):
 		state = CHARGE
 		charge_direction = (player_target.position - position).normalized()

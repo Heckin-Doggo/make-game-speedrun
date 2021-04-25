@@ -33,7 +33,6 @@ func change_pos(pos : Vector2):
 	position.y = pos.y
 
 func despawn():
-	print("despawning")
 	queue_free()
 
 func do_damage(body):
