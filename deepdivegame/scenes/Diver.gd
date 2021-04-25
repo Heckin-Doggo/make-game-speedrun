@@ -6,6 +6,7 @@ onready var globals = get_node("/root/Globals")
 #variables
 export var movespeed_x = 50
 export var movespeed_y = 50
+var top_limit = 0
 var debounce = false
 
 var screen_size
@@ -34,7 +35,7 @@ func _physics_process(delta):
 	velocity = move_and_slide(move_vector)
 	
 	position.x = clamp(position.x, 0, screen_size.x)
-	position.y = clamp(position.y, 0, 10000)
+	position.y = clamp(position.y, top_limit, 10000)
 	
 	# animation
 	var flip = velocity.x < 0
@@ -58,6 +59,9 @@ func _process(delta):
 		if !$FlashLightTimer.is_stopped():
 			$FlashLightTimer.stop()
 		$Light2D.texture_scale = 1
+	if globals.player["depth"] == 10000:
+		$Camera2D.limit_top = 10000-170
+		top_limit = 10000-163
 
 
 func _on_BubbleTimer_timeout():

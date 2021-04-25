@@ -50,5 +50,5 @@ stream = ExtResource( 8 )
 autoplay = true
 
 [node name="OceanFloor" type="Sprite" parent="."]
-position = Vector2( 160, 10000 )
+position = Vector2( 160, 9910 )
 texture = ExtResource( 9 )

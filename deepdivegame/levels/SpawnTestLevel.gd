@@ -31,7 +31,7 @@ func _process(delta):
 # handles spawning
 func _on_SpawnTimer_timeout():
 	var random_float = randf()
-	
+
 #	if random_float < 0.2:
 #		spawn_snark()
 #	elif random_float < 0.4:
