@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://levels/HUD2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/Background.png" type="Texture" id=5]
 [ext_resource path="res://scenes/AirBubble.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Gloosh.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/sounds/DDG-TheDive.ogg" type="AudioStream" id=8]
 
 [node name="SpawnTestLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -38,3 +40,10 @@ position = Vector2( 160, 240 )
 
 [node name="Flashlight" parent="." instance=ExtResource( 3 )]
 position = Vector2( 160, 250 )
+
+[node name="Gloosh" parent="." instance=ExtResource( 7 )]
+position = Vector2( 226.903, 144.591 )
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+autoplay = true
