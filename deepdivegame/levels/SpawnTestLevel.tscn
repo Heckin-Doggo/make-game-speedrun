@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://scenes/AirBubble.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/Gloosh.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sounds/DDG-TheDive.ogg" type="AudioStream" id=8]
+[ext_resource path="res://assets/DeepDiveBackground.png" type="Texture" id=9]
 
 [node name="SpawnTestLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -19,7 +20,7 @@ texture = ExtResource( 5 )
 offset = Vector2( 160, 90 )
 
 [node name="Diver" parent="." instance=ExtResource( 2 )]
-position = Vector2( 160, 112 )
+position = Vector2( 164.088, 9789.43 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
@@ -48,12 +49,9 @@ position = Vector2( 226.903, 144.591 )
 stream = ExtResource( 8 )
 autoplay = true
 
-<<<<<<< Updated upstream
 [node name="OceanFloor" type="Sprite" parent="."]
 position = Vector2( 160, 9910 )
 texture = ExtResource( 9 )
-=======
+
 [node name="FlashlightTimer" type="Timer" parent="."]
-wait_time = 10.0
 autostart = true
->>>>>>> Stashed changes
