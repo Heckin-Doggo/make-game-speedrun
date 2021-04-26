@@ -32,8 +32,9 @@ shape = SubResource( 2 )
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 3 )
-texture_scale = 0.25
+texture_scale = 0.75
 color = Color( 1, 1, 1, 0.247059 )
+mode = 2
 
 [node name="BubblePop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
