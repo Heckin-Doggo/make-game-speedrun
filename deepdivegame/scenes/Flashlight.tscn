@@ -39,5 +39,5 @@ color = Color( 1, 1, 1, 0.247059 )
 stream = ExtResource( 4 )
 
 [node name="DespawnTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 30.0
 autostart = true
