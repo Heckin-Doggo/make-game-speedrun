@@ -38,7 +38,6 @@ func _process(delta):
 	darkness.set_color(color)
 	if globals.player["depth"] > 9940 and not boss_started:
 		boss_started = true
-		call_runaway()
 
 	# Music Handler
 	if current_song != globals.music:

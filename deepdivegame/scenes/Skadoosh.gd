@@ -43,9 +43,11 @@ func _process(delta):
 		queue_free()
 
 func appear(body):
+	
 	if not appeared:
 		# Change Music
 		globals.music = "sting"
+		get_parent().call_runaway()
 		tween.interpolate_property(self, "position",
 		position, Vector2(position.x, position.y - 120), 1,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)

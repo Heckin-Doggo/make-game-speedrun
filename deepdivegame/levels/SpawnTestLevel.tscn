@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -20,6 +20,9 @@ light_mode = 1
 [sub_resource type="DynamicFont" id=2]
 size = 8
 font_data = ExtResource( 11 )
+
+[sub_resource type="CanvasItemMaterial" id=4]
+light_mode = 1
 
 [sub_resource type="DynamicFont" id=3]
 size = 8
@@ -81,6 +84,7 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="Credits"]
 
 [node name="RestartButton" type="Button" parent="Credits"]
+material = SubResource( 4 )
 margin_left = 120.0
 margin_top = 380.0
 margin_right = 200.0
@@ -102,10 +106,10 @@ position = Vector2( 160, 9910 )
 texture = ExtResource( 9 )
 
 [node name="Diver" parent="." instance=ExtResource( 2 )]
-position = Vector2( 141.382, 40 )
+position = Vector2( 141.382, 9800 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.6
 autostart = true
 
 [node name="BubbleTimer" type="Timer" parent="."]
