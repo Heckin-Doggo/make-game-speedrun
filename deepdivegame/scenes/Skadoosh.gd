@@ -75,9 +75,9 @@ func attack_cycle():
 		else:
 			cycle = true
 			snark_attack_wave("top")
-			yield(get_tree().create_timer(3),"timeout")
+			yield(get_tree().create_timer(4),"timeout")
 			snark_attack_wave("bottom")
-			yield(get_tree().create_timer(3),"timeout")
+			yield(get_tree().create_timer(4),"timeout")
 			snark_attack_walls(2)
 			yield(get_tree().create_timer(5),"timeout")
 			tentacle2.rise(15)
@@ -112,18 +112,18 @@ func snark_attack_walls(wall_count):
 		yield(get_tree().create_timer(0.8),"timeout")
 
 func snark_attack_wave(direction):
-	for x in range(0, 6):
+	for x in range(0, 7):
 		var snark1 = Warning.instance()
 		var snark2 = Warning.instance()
 		var warning_spot = Vector2.ZERO
 		snark1.set_side("left")
 		snark2.set_side("right")
 		if direction == "bottom":
-			snark1.set_position(Vector2(40, 10000 - x*30))
-			snark2.set_position(Vector2(310, 10000 - x*30))
+			snark1.set_position(Vector2(40, 10000 - x*25))
+			snark2.set_position(Vector2(310, 10000 - x*25))
 		else:
-			snark1.set_position(Vector2(40, 9820 + x*30))
-			snark2.set_position(Vector2(310, 9820 + x*30))
+			snark1.set_position(Vector2(40, 9840 + x*25))
+			snark2.set_position(Vector2(310, 9840 + x*25))
 		get_parent().add_child(snark1)
 		get_parent().add_child(snark2)
 		yield(get_tree().create_timer(0.5),"timeout")
