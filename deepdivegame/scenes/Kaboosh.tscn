@@ -1,12 +1,16 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/Kaboosh.gd" type="Script" id=1]
 [ext_resource path="res://assets/Kaboosh.png" type="Texture" id=2]
 [ext_resource path="res://assets/Light 25.png" type="Texture" id=3]
 [ext_resource path="res://assets/sounds/tick.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/KabooshExploding.png" type="Texture" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.125
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
 
 [node name="Kaboosh" type="RigidBody2D"]
 collision_layer = 2
@@ -39,3 +43,8 @@ autostart = true
 [node name="TickSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
 volume_db = 1.95
+
+[node name="SpriteExplode" type="Sprite" parent="."]
+visible = false
+material = SubResource( 2 )
+texture = ExtResource( 5 )

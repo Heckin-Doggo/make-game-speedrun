@@ -9,6 +9,10 @@ var blipped = true
 
 func _physics_process(delta):
 	position.y = clamp(position.y, 10000-150, 10000-30)
+	if linear_velocity.x > 0:
+		$SpriteExplode.flip_h = true
+	else:
+		$SpriteExplode.flip_h = false
 
 func _process(delta):
 	time += delta
@@ -16,9 +20,9 @@ func _process(delta):
 		time -= tick_delay
 		tick_delay = tick_delay * .8
 		if blipped:
-			modulate = Color(0,1,0)
+			$SpriteExplode.show()
 		else:
-			modulate = Color(1,1,1)
+			$SpriteExplode.hide()
 		$TickSound.play()
 		blipped = !blipped
 
