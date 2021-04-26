@@ -26,5 +26,5 @@ func _process(delta):
 func start_game():
 	print("Game starting!")
 	started = true
-	yield(get_tree().create_timer(3), "timeout")
+	# yield(get_tree().create_timer(3), "timeout")
 	get_tree().change_scene("res://levels/SpawnTestLevel.tscn")
