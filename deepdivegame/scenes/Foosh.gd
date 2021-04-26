@@ -1,6 +1,6 @@
 extends Feesh
 
-var dash_speed = speed * 3
+var dash_speed = speed * 4
 var charge_direction = Vector2.ZERO
 var tired = false
 var state = SWIM
