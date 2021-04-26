@@ -42,8 +42,8 @@ func _physics_process(delta):
 			if runaway:
 				state = SWIM
 		CHARGE:
+			$Sprite.animation = "Charge"
 			tired = true
 			velocity = charge_direction
 			speed = dash_speed
 	position.y = clamp(position.y, 0, INF)
-
