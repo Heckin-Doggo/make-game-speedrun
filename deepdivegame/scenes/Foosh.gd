@@ -28,7 +28,6 @@ func player_lost(player):
 	if not tired and not runaway:
 		state = CHARGE
 		charge_direction = (player_target.position - position).normalized()
-	player_target = null
 
 func _physics_process(delta):
 	match state:
