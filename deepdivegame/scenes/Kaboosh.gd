@@ -5,6 +5,7 @@ onready var explosion_timer = $Timer
 
 func _ready():
 	explosion_timer.connect("timeout", self, "explode")
+	swim_speed = swim_speed * 0.5
 	
 func explode():
 	var new_explosion = Explosion.instance()

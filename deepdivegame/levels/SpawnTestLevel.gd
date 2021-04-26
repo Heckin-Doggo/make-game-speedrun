@@ -146,7 +146,7 @@ func spawn_feesh(feesh_type):
 		new_feesh.init("right")
 	
 	#spawns fish at players depth
-	pos_vector.y = round(rand_range(-50  + globals.player["depth"], 250 + globals.player["depth"]))  # ints only muahaha
+	pos_vector.y = round(rand_range(globals.player["depth"], 300 + globals.player["depth"]))  # ints only muahaha
 
 	new_feesh.change_pos(pos_vector)
 	add_child(new_feesh)
@@ -161,7 +161,7 @@ func spawn_snark():
 	else:
 		new_warning.set_side("right")
 		warning_spot.x = 310
-	warning_spot.y = globals.player["depth"]
+	warning_spot.y = globals.player["depth"] + rand_range(20, 125)
 	new_warning.set_position(warning_spot)
 	add_child(new_warning)
 
