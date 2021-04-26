@@ -50,7 +50,8 @@ margin_top = 10100.0
 margin_right = 320.0
 margin_bottom = 10114.0
 custom_fonts/font = SubResource( 2 )
-text = "<INSERT GAME NAME>
+text = "DEEP DIVE INTO THE DARK DEPTHS
+------------------------------
 A game by smubear and Nuclear Chair.
 Created for Ludum Dare 48
 
@@ -71,10 +72,9 @@ GDDC
 BeepBox.co
 GitHub
 Godot Engine
-
-External Resource:
 \"Splash, Jumping, H.wav\" by InspectorJ
 (www.jshaw.co.uk) of Freesound.org
+Font - PC Senior
 
 
 
