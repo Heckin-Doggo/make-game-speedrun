@@ -5,6 +5,7 @@ onready var globals = get_node("/root/Globals")
 
 var death_depth = 0
 var boss_threshold = 9830 # where the top of camera goes to.
+var last_song = "normal"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -34,6 +35,12 @@ func _process(delta):
 			$DeathPrompt/ButtonBossRestart.show()
 	else:
 		$DeathPrompt.hide()
+		
+	# Show the prompt.
+	if globals.music != last_song:
+		if globals.music == "sting":
+			show_boss_message()
+		last_song = globals.music
 
 func restart():
 	globals.player["oxygen"] = 68
@@ -50,3 +57,8 @@ func boss_restart():
 func change_death_depth(depth):  # makes sure this only updates once.
 	if death_depth == 0:
 		death_depth = depth
+		
+func show_boss_message():
+	$BossMessage.show()
+	yield(get_tree().create_timer(5), "timeout")
+	$BossMessage.hide()

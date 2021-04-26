@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/OxygenBottle.png" type="Texture" id=1]
 [ext_resource path="res://levels/HUD2.gd" type="Script" id=2]
@@ -10,6 +10,11 @@
 [sub_resource type="DynamicFont" id=1]
 size = 8
 outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 8
+outline_size = 1
 font_data = ExtResource( 3 )
 
 [node name="HUD2" type="Control"]
@@ -182,3 +187,22 @@ clip_text = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="BossMessage" type="Label" parent="."]
+visible = false
+margin_top = 10.0
+margin_right = 320.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+text = "Find a way to 
+blow up the eyes!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = 320.0
+margin_right = 321.0
+margin_bottom = 180.0
