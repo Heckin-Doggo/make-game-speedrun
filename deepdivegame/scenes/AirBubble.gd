@@ -11,7 +11,7 @@ export var float_speed = 32
 export var amplifier = 10
 export var period = 2  # this really shouldnt go above 2. use amplifier instead.
 
-export var oxygen_boost = 20
+export var oxygen_boost = 10
 
 # var anim_steps = [-2,-1,0,1,2,1,0,-1]
 var time_since_last_cycle = 0
