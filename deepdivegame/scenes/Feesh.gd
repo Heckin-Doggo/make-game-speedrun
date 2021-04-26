@@ -48,5 +48,5 @@ func flip():
 func run_away():
 	runaway = true
 	speed = run_speed
-	get_node("Damagebox/CollisionShape2D").disabled = true
-	get_node("CollisionShape2D").disabled = true
+	get_node("Damagebox/CollisionShape2D").set_deferred("disabled", true)
+	get_node("CollisionShape2D").set_deferred("disabled", true)
