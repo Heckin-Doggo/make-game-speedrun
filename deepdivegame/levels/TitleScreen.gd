@@ -2,8 +2,10 @@ extends Node2D
 
 
 # Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var started = false
+var ticker = 0.0
+var boat_y = 1
+var delay = 60.0/70.0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -12,8 +14,14 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _process(delta):
+	ticker += delta
+	print(ticker)
+	if not started:
+		if ticker > delay:
+			ticker -= delay
+			boat_y = -boat_y
+			$Boat.position.y += boat_y
 
 func start_game():
 	print("Game starting!")
