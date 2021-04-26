@@ -1,4 +1,5 @@
 extends RigidBody2D
+class_name SplooshPellet
 
 onready var hitbox = $Hitbox
 var velocity = Vector2.ZERO

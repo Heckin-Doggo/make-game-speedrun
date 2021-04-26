@@ -3,6 +3,9 @@ extends Node2D
 onready var globals = get_node("/root/Globals")
 var Sploosh = preload("res://scenes/Sploosh.tscn")
 var Warning = preload("res://scenes/SnarkWarning.tscn")
+var Kaboosh = preload("res://scenes/Kaboosh.tscn")
+onready var tentacle1 = get_parent().get_node_or_null("Tentacle")
+onready var tentacle2 = get_parent().get_node_or_null("Tentacle2")
 onready var tween = $Tween
 onready var lure = $Area2D
 var appeared = false
@@ -37,14 +40,33 @@ func appear(body):
 		attack_cycle()
 
 func attack_cycle():
+	var cycle = true
 	while true:
-		snark_attack_walls(4)
-		yield(get_tree().create_timer(5),"timeout")
-		summon_sploosh()
-		yield(get_tree().create_timer(10),"timeout")
-		get_parent().call_runaway()
-		snark_attack_wave()
-		yield(get_tree().create_timer(5),"timeout")
+		if cycle:
+			snark_attack_walls(4)
+			yield(get_tree().create_timer(5),"timeout")
+			tentacle1.rise(5)
+			tentacle2.rise(5)
+			summon_sploosh()
+			yield(get_tree().create_timer(10),"timeout")
+			get_parent().call_runaway()
+			snark_attack_wave("bottom")
+			yield(get_tree().create_timer(5),"timeout")
+			tentacle1.rise(15)
+			get_parent().spawn_gloosh(Kaboosh)
+			yield(get_tree().create_timer(15),"timeout")
+			cycle = false
+		else:
+			cycle = true
+			snark_attack_wave("top")
+			yield(get_tree().create_timer(3),"timeout")
+			snark_attack_wave("bottom")
+			yield(get_tree().create_timer(3),"timeout")
+			snark_attack_walls(2)
+			yield(get_tree().create_timer(5),"timeout")
+			tentacle2.rise(15)
+			get_parent().spawn_gloosh(Kaboosh)
+			yield(get_tree().create_timer(15),"timeout")
 
 func snark_attack_walls(wall_count):
 	for x in range(0, wall_count):
@@ -71,16 +93,19 @@ func snark_attack_walls(wall_count):
 				get_parent().add_child(snark)
 		yield(get_tree().create_timer(0.8),"timeout")
 
-func snark_attack_wave():
+func snark_attack_wave(direction):
 	for x in range(0, 6):
 		var snark1 = Warning.instance()
 		var snark2 = Warning.instance()
 		var warning_spot = Vector2.ZERO
 		snark1.set_side("left")
 		snark2.set_side("right")
-		
-		snark1.set_position(Vector2(40, 10000 - x*30))
-		snark2.set_position(Vector2(310, 10000 - x*30))
+		if direction == "bottom":
+			snark1.set_position(Vector2(40, 10000 - x*30))
+			snark2.set_position(Vector2(310, 10000 - x*30))
+		else:
+			snark1.set_position(Vector2(40, 9820 + x*30))
+			snark2.set_position(Vector2(310, 9820 + x*30))
 		get_parent().add_child(snark1)
 		get_parent().add_child(snark2)
 		yield(get_tree().create_timer(0.5),"timeout")

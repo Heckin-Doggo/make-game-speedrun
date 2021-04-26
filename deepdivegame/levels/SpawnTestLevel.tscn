@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@
 [ext_resource path="res://scenes/Kaboosh.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/sounds/DDG-BossSting2.wav" type="AudioStream" id=11]
 [ext_resource path="res://assets/sounds/DDG-BossTheme.ogg" type="AudioStream" id=12]
+[ext_resource path="res://scenes/Tentacle.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/Light 25.png" type="Texture" id=14]
 
 [node name="SpawnTestLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,6 +25,12 @@ offset = Vector2( 160, 90 )
 
 [node name="Skadoosh" parent="." instance=ExtResource( 7 )]
 position = Vector2( 171.416, 10024.3 )
+
+[node name="Tentacle" parent="." instance=ExtResource( 13 )]
+position = Vector2( 56.4593, 10004.3 )
+
+[node name="Tentacle2" parent="." instance=ExtResource( 13 )]
+position = Vector2( 270.246, 10001 )
 
 [node name="OceanFloor" type="Sprite" parent="."]
 position = Vector2( 160, 9910 )
@@ -66,3 +74,9 @@ stream = ExtResource( 11 )
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+
+[node name="Light2D" type="Light2D" parent="."]
+position = Vector2( 161.981, 9925.69 )
+texture = ExtResource( 14 )
+texture_scale = 10.0
+mode = 2

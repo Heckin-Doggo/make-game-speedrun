@@ -73,10 +73,6 @@ func _on_SpawnTimer_timeout():
 			spawn_section4(random_float)
 		else:
 			stop_spawns = true
-	elif boss_started:
-		var random_float = randf()
-		if random_float < 0.05:
-			spawn_gloosh(Kaboosh)
 
 
 func spawn_section1(randnum):
