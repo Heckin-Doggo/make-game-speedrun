@@ -27,6 +27,8 @@ func _ready():
 	$BubbleTimer.connect("timeout", self, "spawn_bubble")
 	$FlashlightTimer.connect("timeout", self, "roll_flashlight")
 	$Skadoosh.connect("end_game", self, "roll_credits")
+	$Credits/QuitButton.connect("pressed", self, "exit_game")
+	$Credits/RestartButton.connect("pressed", self, "restart_game")
 	current_song = globals.music
 
 
@@ -200,4 +202,9 @@ func roll_credits():
 	while true:  # all the air
 		globals.player["oxygen"] = 100000
 		yield(get_tree().create_timer(1),"timeout")
-		
+
+func exit_game():
+	get_tree().quit()  # quits the game
+
+func restart_game():
+	get_tree().change_scene("res://levels/TitleScreen.tscn")
