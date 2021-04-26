@@ -8,6 +8,8 @@ export var movespeed_x = 50
 export var movespeed_y = 50
 var top_limit = 0
 var debounce = false
+var dead = false
+var sink = Vector2(0,3)
 
 var screen_size
 
@@ -25,10 +27,9 @@ func _ready():
 # called every physics frame, which is before each drawn frame
 func _physics_process(delta):
 	var velocity = Vector2()
-	var sink = Vector2(0,3)  # sinking vector
-	
-	velocity.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * movespeed_x
-	velocity.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")) * movespeed_y
+	if not dead:
+		velocity.x = (Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")) * movespeed_x
+		velocity.y = (Input.get_action_strength("ui_down") - Input.get_action_strength("ui_up")) * movespeed_y
 	
 	var move_vector = (velocity + sink)
 	
@@ -41,12 +42,14 @@ func _physics_process(delta):
 	var flip = velocity.x < 0
 	$AnimatedSprite.flip_h = flip
 	# idle animation if not moving
-	if velocity.y > 5:
-		$AnimatedSprite.animation = "swim_down"
-	elif abs(velocity.x) > 0:
-		$AnimatedSprite.animation = "swim_h"
-	else:
-		$AnimatedSprite.animation = "idle"
+	if not dead:
+		if velocity.y > 5:
+			$AnimatedSprite.animation = "swim_down"
+		elif abs(velocity.x) > 0:
+			$AnimatedSprite.animation = "swim_h"
+		else:
+			$AnimatedSprite.animation = "idle"
+		
 
 
 func _process(delta):
@@ -64,6 +67,13 @@ func _process(delta):
 	if globals.player["depth"] == 10000 - 60:
 		$Camera2D.limit_top = 10000-170
 		top_limit = 10000-163
+	
+	if globals.player["oxygen"] <= 0:
+		dead = true
+		$AnimatedSprite.animation = "dead"
+		$CollisionShape2D.disabled = true
+		$BubbleTimer.paused = true
+		sink = Vector2(0, 20)
 
 
 func _on_BubbleTimer_timeout():
