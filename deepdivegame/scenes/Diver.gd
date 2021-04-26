@@ -74,6 +74,7 @@ func _process(delta):
 		$CollisionShape2D.disabled = true
 		$BubbleTimer.paused = true
 		sink = Vector2(0, 20)
+		globals.player["alive"] = false
 
 
 func _on_BubbleTimer_timeout():
