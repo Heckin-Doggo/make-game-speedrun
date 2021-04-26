@@ -105,7 +105,7 @@ func take_damage():
 	if not debounce:
 		debounce = true
 		$DamageSound.play()
-		globals.player["oxygen"] -= 15
+		globals.player["oxygen"] -= 13
 		spawn_bubbles(5, 0.1)
 		modulate = Color(1,.4,.4)
 		yield(get_tree().create_timer(0.5),"timeout")
