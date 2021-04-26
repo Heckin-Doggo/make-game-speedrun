@@ -12,6 +12,7 @@ var debounce = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$HitBox.connect("body_entered", self, "_on_collect")
+	$DespawnTimer.connect("timeout", self, "queue_free")
 	linear_velocity.x = randf()*3
 
 
