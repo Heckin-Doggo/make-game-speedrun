@@ -9,7 +9,6 @@ func _ready():
 	$Alarm.play()
 
 func spawn_snark():
-	print("Spawning Snark!")
 	var new_snark = Snark.instance()
 	new_snark.init(side)
 	if side == "left":

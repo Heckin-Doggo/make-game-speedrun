@@ -63,13 +63,10 @@ func _on_SpawnTimer_timeout():
 		if globals.player["depth"] < 1000:
 			spawn_section1(random_float)
 		elif globals.player["depth"] < 3000:
-			print("spawning 2")
 			spawn_section2(random_float)
 		elif globals.player["depth"] < 6000:
-			print("spawning 3")
 			spawn_section3(random_float)
 		elif globals.player["depth"] < 10000 - 60:
-			print("spawning 4")
 			spawn_section4(random_float)
 		else:
 			stop_spawns = true

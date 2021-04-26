@@ -6,6 +6,7 @@ var risen = false
 
 func rise(num):
 	if not risen:
+		$Light2D.enabled = true
 		tween.interpolate_property(self, "position",
 		position, Vector2(position.x, position.y - 60), 1,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
@@ -13,6 +14,7 @@ func rise(num):
 		risen = true
 		yield(get_tree().create_timer(2),"timeout")
 		shoot(num)
+		
 
 func lower():
 	if risen:
@@ -20,6 +22,7 @@ func lower():
 		position, Vector2(position.x, position.y + 60), 1,
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
 		tween.start()
+		$Light2D.enabled = false
 		risen = false
 
 func shoot(num):
@@ -33,10 +36,10 @@ func shoot(num):
 		var new_shot5 = Shot.instance()
 		var shot_list = [new_shot1, new_shot2, new_shot3, new_shot4, new_shot5]
 		for shot in shot_list:
-			var x_distance = cos((radians * bullet_num) + x * PI/8)
-			var y_distance = sin((radians * bullet_num) + x * PI/8)
+			var x_distance = cos((radians * bullet_num) + x * PI/4)
+			var y_distance = sin((radians * bullet_num) + x * PI/4)
 			shot.init(Vector2(x_distance, y_distance), position, 40)
 			bullet_num += 1
 			get_parent().add_child(shot)
-		yield(get_tree().create_timer(0.74),"timeout")
+		yield(get_tree().create_timer(0.66),"timeout")
 	lower()

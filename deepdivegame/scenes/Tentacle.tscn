@@ -14,5 +14,6 @@ offset = Vector2( 12.5, -27.5 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="Light2D" type="Light2D" parent="."]
+enabled = false
 texture = ExtResource( 3 )
 mode = 2

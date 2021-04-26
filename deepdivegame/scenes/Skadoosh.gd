@@ -27,9 +27,12 @@ func _ready():
 	bot_right_eye.connect("area_entered", self, "lose_bot_right")
 	bot_left_eye.connect("area_entered", self, "lose_bot_left")
 
+func _process(delta):
+	if health == 0:
+		queue_free()
+
 func appear(body):
 	if not appeared:
-		print("Appearing")
 		# Change Music
 		globals.music = "sting"
 		tween.interpolate_property(self, "position",
@@ -123,26 +126,30 @@ func summon_sploosh():
 func lose_top_right(body):
 	top_right_eye.get_child(0).disabled = true
 	$TopRightEye2.visible = true
+	health -= 1
 
 func lose_top_left(body):
 	top_left_eye.get_child(0).disabled = true
 	$TopLeftEye2.visible = true
+	health -= 1
 
 func lose_mid_right(body):
 	mid_right_eye.get_child(0).disabled = true
 	$MidRightEye2.visible = true
+	health -= 1
 
 func lose_mid_left(body):
 	mid_left_eye.get_child(0).disabled = true
 	$MidLeftEye2.visible = true
+	health -= 1
 
 func lose_bot_right(body):
 	bot_right_eye.get_child(0).disabled = true
 	$BotRightEye2.visible = true
+	health -= 1
 
 func lose_bot_left(body):
 	bot_left_eye.get_child(0).disabled = true
 	$BotLeftEye2.visible = true
-
-func take_damage():
 	health -= 1
+
