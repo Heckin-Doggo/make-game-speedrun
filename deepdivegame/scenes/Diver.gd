@@ -22,6 +22,10 @@ func _ready():
 	$BubbleTimer.connect("timeout", self, "_on_BubbleTimer_timeout")
 	$OxygenTimer.connect("timeout", self, "_on_OxygenTimer_timeout")
 	$FlashLightTimer.connect("timeout", self, "_on_FLTimer_timeout")
+	# boss restart check
+	if globals.boss_restart:
+		globals.boss_restart = false
+		position.y = 9700  # right before boss.
 
 
 # called every physics frame, which is before each drawn frame

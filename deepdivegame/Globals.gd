@@ -13,3 +13,4 @@ var powerups = {
 }
 
 var music = "normal"
+var boss_restart = false

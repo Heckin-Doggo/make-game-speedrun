@@ -3,14 +3,13 @@ extends Control
 # Load globals
 onready var globals = get_node("/root/Globals")
 
+var death_depth = 0
+var boss_threshold = 9830 # where the top of camera goes to.
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-#	for i in range(7,-1,-1):
-#		print(i)
-#		globals.powerups["flashlight"] = i
-#		yield(get_tree().create_timer(1), "timeout")
-	pass
+	$DeathPrompt/ButtonNormalRestart.connect("pressed", self, "restart")
+	$DeathPrompt/ButtonBossRestart.connect("pressed", self, "boss_restart")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,3 +24,28 @@ func _process(delta):
 		$FlashlightIndicator/Batteries.rect_size.y = 8 * globals.powerups["flashlight"]
 	else:
 		$FlashlightIndicator.visible = false
+		
+	# Show death prompt and decide if boss prompt should show too.
+	if globals.player["alive"] == false:
+		change_death_depth(globals.player["depth"])
+		$DeathPrompt.show()
+		if death_depth > boss_threshold:
+			print("oh cool you died in boss")
+			$DeathPrompt/ButtonBossRestart.show()
+	else:
+		$DeathPrompt.hide()
+
+func restart():
+	globals.player["oxygen"] = 68
+	globals.player["alive"] = true
+	$DeathPrompt/ButtonBossRestart.hide()
+	$DeathPrompt.hide()
+	get_tree().reload_current_scene()
+	
+func boss_restart():
+	globals.boss_restart = true
+	restart()
+
+func change_death_depth(depth):  # makes sure this only updates once.
+	if death_depth == 0:
+		death_depth = depth
