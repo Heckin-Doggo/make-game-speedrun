@@ -56,6 +56,7 @@ func appear(body):
 		Tween.TRANS_QUAD, Tween.EASE_OUT)
 		tween.start()
 		appeared = true
+		yield(get_tree().create_timer(3),"timeout")
 		attack_cycle()
 
 func attack_cycle():
