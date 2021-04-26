@@ -125,11 +125,7 @@ position = Vector2( 160, 9910 )
 texture = ExtResource( 9 )
 
 [node name="Diver" parent="." instance=ExtResource( 2 )]
-<<<<<<< Updated upstream
 position = Vector2( 141.382, 120 )
-=======
-position = Vector2( 141.382, 400 )
->>>>>>> Stashed changes
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.6
