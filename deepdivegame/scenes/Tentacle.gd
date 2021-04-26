@@ -4,7 +4,7 @@ var Shot = preload("res://scenes/Tentacleshot.tscn")
 onready var tween = $Tween
 var risen = false
 
-func rise(num):
+func rise(num, num_of_bullets):
 	if not risen:
 		$Light2D.enabled = true
 		tween.interpolate_property(self, "position",
@@ -13,7 +13,7 @@ func rise(num):
 		tween.start()
 		risen = true
 		yield(get_tree().create_timer(2),"timeout")
-		shoot(num)
+		shoot(num, num_of_bullets)
 		
 
 func lower():
@@ -25,25 +25,17 @@ func lower():
 		$Light2D.enabled = false
 		risen = false
 
-func shoot(num):
+func shoot(num, num_of_bullets):
 	for x in range(0, num):
-		var radians = (2 * PI/10)
+		var radians = (2 * PI/num_of_bullets)
 		var bullet_num = 1
-		var new_shot1 = Shot.instance()
-		var new_shot2 = Shot.instance()
-		var new_shot3 = Shot.instance()
-		var new_shot4 = Shot.instance()
-		var new_shot5 = Shot.instance()
-		var new_shot6 = Shot.instance()
-		var new_shot7 = Shot.instance()
-		var new_shot8 = Shot.instance()
-		var new_shot9 = Shot.instance()
-		var new_shot10 = Shot.instance()
-		var shot_list = [new_shot1, new_shot2, new_shot3, new_shot4, new_shot5,
-		new_shot6, new_shot7, new_shot8, new_shot9, new_shot10]
+		var shot_list = []
+		for y in range(0, num_of_bullets):
+			var new_shot = Shot.instance()
+			shot_list.append(new_shot)
 		for shot in shot_list:
-			var x_distance = cos((radians * bullet_num) + x * PI/4)
-			var y_distance = sin((radians * bullet_num) + x * PI/4)
+			var x_distance = cos((radians * bullet_num) + x * PI/num_of_bullets)
+			var y_distance = sin((radians * bullet_num) + x * PI/num_of_bullets)
 			shot.init(Vector2(x_distance, y_distance), position, 40)
 			bullet_num += 1
 			get_parent().add_child(shot)

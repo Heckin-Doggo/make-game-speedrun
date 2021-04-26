@@ -10,8 +10,11 @@ onready var tween = $Tween
 onready var lure = $Area2D
 var appeared = false
 var health = 6
+var attack_speed = 0.55
+var bullet_num = 5
 
 signal end_game
+signal attack_done
 
 onready var top_right_eye = $TopRightEye
 onready var top_left_eye = $TopLeftEye
@@ -60,27 +63,27 @@ func attack_cycle():
 	while true:
 		if cycle:
 			snark_attack_walls(4)
-			yield(get_tree().create_timer(5),"timeout")
-			tentacle1.rise(5)
-			tentacle2.rise(5)
+			yield(self, "attack_done")
+			tentacle1.rise(5, bullet_num)
+			tentacle2.rise(5, bullet_num)
 			summon_sploosh()
 			yield(get_tree().create_timer(10),"timeout")
 			get_parent().call_runaway()
 			snark_attack_wave("bottom")
-			yield(get_tree().create_timer(5),"timeout")
-			tentacle1.rise(15)
+			yield(self, "attack_done")
+			tentacle1.rise(15, (bullet_num / 5) + 4)
 			get_parent().spawn_gloosh(Kaboosh)
 			yield(get_tree().create_timer(15),"timeout")
 			cycle = false
 		else:
 			cycle = true
 			snark_attack_wave("top")
-			yield(get_tree().create_timer(4),"timeout")
+			yield(self, "attack_done")
 			snark_attack_wave("bottom")
-			yield(get_tree().create_timer(4),"timeout")
+			yield(self, "attack_done")
 			snark_attack_walls(2)
-			yield(get_tree().create_timer(5),"timeout")
-			tentacle2.rise(15)
+			yield(self, "attack_done")
+			tentacle2.rise(15, (bullet_num / 5) + 4)
 			get_parent().spawn_gloosh(Kaboosh)
 			yield(get_tree().create_timer(15),"timeout")
 
@@ -109,7 +112,9 @@ func snark_attack_walls(wall_count):
 				snark.set_position(Vector2(310, start))
 				start = start - 40
 				get_parent().add_child(snark)
-		yield(get_tree().create_timer(0.8),"timeout")
+		yield(get_tree().create_timer(attack_speed + 0.2),"timeout")
+	yield(get_tree().create_timer(1),"timeout")
+	emit_signal("attack_done")
 
 func snark_attack_wave(direction):
 	for x in range(0, 7):
@@ -126,7 +131,9 @@ func snark_attack_wave(direction):
 			snark2.set_position(Vector2(310, 9840 + x*25))
 		get_parent().add_child(snark1)
 		get_parent().add_child(snark2)
-		yield(get_tree().create_timer(0.5),"timeout")
+		yield(get_tree().create_timer(attack_speed),"timeout")
+	yield(get_tree().create_timer(1),"timeout")
+	emit_signal("attack_done")
 
 func summon_sploosh():
 	var new_sploosh1 = Sploosh.instance()
@@ -139,32 +146,43 @@ func summon_sploosh():
 	get_parent().add_child(new_sploosh2)
 
 func lose_top_right(body):
-	top_right_eye.get_child(0).disabled = true
+	get_node("TopRightEye/CollisionShape2D").set_deferred("disabled", true)
 	$TopRightEye2.visible = true
 	health -= 1
+	attack_speed -= 0.05
+	bullet_num += 3
 
 func lose_top_left(body):
-	top_left_eye.get_child(0).disabled = true
+	get_node("TopLeftEye/CollisionShape2D").set_deferred("disabled", true)
 	$TopLeftEye2.visible = true
 	health -= 1
+	attack_speed -= 0.05
+	bullet_num += 3
 
 func lose_mid_right(body):
-	mid_right_eye.get_child(0).disabled = true
+	get_node("MidRightEye/CollisionShape2D").set_deferred("disabled", true)
 	$MidRightEye2.visible = true
 	health -= 1
+	attack_speed -= 0.05
+	bullet_num += 3
 
 func lose_mid_left(body):
-	mid_left_eye.get_child(0).disabled = true
+	get_node("MidLeftEye/CollisionShape2D").set_deferred("disabled", true)
 	$MidLeftEye2.visible = true
 	health -= 1
+	attack_speed -= 0.05
+	bullet_num += 3
 
 func lose_bot_right(body):
-	bot_right_eye.get_child(0).disabled = true
+	get_node("BotRightEye/CollisionShape2D").set_deferred("disabled", true)
 	$BotRightEye2.visible = true
 	health -= 1
+	attack_speed -= 0.05
+	bullet_num += 3
 
 func lose_bot_left(body):
-	bot_left_eye.get_child(0).disabled = true
+	get_node("BotLeftEye/CollisionShape2D").set_deferred("disabled", true)
 	$BotLeftEye2.visible = true
 	health -= 1
-
+	attack_speed -= 0.05
+	bullet_num += 3
