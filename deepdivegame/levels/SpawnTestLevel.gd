@@ -22,7 +22,7 @@ var x_bound = 320
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# rng.randomize()  # enable this on release
-	# randomize()  # or this one
+	randomize()  # or this one
 	$SpawnTimer.connect("timeout",self,"_on_SpawnTimer_timeout")
 	$BubbleTimer.connect("timeout", self, "spawn_bubble")
 	$FlashlightTimer.connect("timeout", self, "roll_flashlight")
