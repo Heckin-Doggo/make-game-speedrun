@@ -24,6 +24,7 @@ func _ready():
 	$FlashLightTimer.connect("timeout", self, "_on_FLTimer_timeout")
 	# boss restart check
 	if globals.boss_restart:
+		yield(get_tree().create_timer(0.05), "timeout")
 		globals.boss_restart = false
 		position.y = 9700  # right before boss.
 
