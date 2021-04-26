@@ -23,15 +23,15 @@ animations = [ {
 "name": "idle",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
-"loop": true,
-"name": "swim_down",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "swim_h",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "swim_down",
+"speed": 3.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]

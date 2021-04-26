@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://assets/pcsenior.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://assets/sounds/DDG-BossTheme.ogg" type="AudioStream" id=12]
 [ext_resource path="res://scenes/Tentacle.tscn" type="PackedScene" id=13]
+[ext_resource path="res://assets/Boat.png" type="Texture" id=14]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -21,10 +22,10 @@ light_mode = 1
 size = 8
 font_data = ExtResource( 11 )
 
-[sub_resource type="CanvasItemMaterial" id=4]
+[sub_resource type="CanvasItemMaterial" id=3]
 light_mode = 1
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
 size = 8
 font_data = ExtResource( 11 )
 
@@ -84,12 +85,12 @@ __meta__ = {
 [node name="Tween" type="Tween" parent="Credits"]
 
 [node name="RestartButton" type="Button" parent="Credits"]
-material = SubResource( 4 )
+material = SubResource( 3 )
 margin_left = 120.0
 margin_top = 380.0
 margin_right = 200.0
 margin_bottom = 396.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "Restart"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -127,6 +128,10 @@ position = Vector2( 160, 240 )
 
 [node name="Flashlight" parent="." instance=ExtResource( 3 )]
 position = Vector2( 160, 250 )
+
+[node name="Boat" type="Sprite" parent="."]
+position = Vector2( 88, -8 )
+texture = ExtResource( 14 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )

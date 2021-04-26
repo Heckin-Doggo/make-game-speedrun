@@ -49,6 +49,7 @@ func _physics_process(delta):
 	if not dead:
 		if velocity.y > 5:
 			$AnimatedSprite.animation = "swim_down"
+			$AnimatedSprite.flip_h = false
 		elif abs(velocity.x) > 0:
 			$AnimatedSprite.animation = "swim_h"
 		else:
