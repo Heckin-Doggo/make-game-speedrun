@@ -209,10 +209,15 @@ func roll_credits():
 	while true:  # all the air
 		globals.player["oxygen"] = 100000
 		yield(get_tree().create_timer(1),"timeout")
-		
+
+
 func convert_to_time(time):
-	
-	return
+	var minutes = int(floor(time)) / 60
+	var seconds = int(floor(time)) % 60
+	if seconds <= 9:
+		seconds = "0"+str(seconds)
+	return (str(minutes) + ":" + str(seconds))
+
 
 func restart_game():
 	get_tree().change_scene("res://levels/TitleScreen.tscn")
