@@ -15,7 +15,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$OxygenDisplay/FillBar.rect_size.y = globals.player["oxygen"]
+	$OxygenDisplay/FillBar.rect_size.y = clamp(globals.player["oxygen"],0,68)
 	$DepthGauge/Label.text = str(floor(globals.player["depth"]/10))
 	
 	var flashlight_power = globals.powerups["flashlight"]

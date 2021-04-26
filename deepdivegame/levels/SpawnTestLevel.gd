@@ -26,6 +26,7 @@ func _ready():
 	$SpawnTimer.connect("timeout",self,"_on_SpawnTimer_timeout")
 	$BubbleTimer.connect("timeout", self, "spawn_bubble")
 	$FlashlightTimer.connect("timeout", self, "roll_flashlight")
+	$Skadoosh.connect("end_game", self, "roll_credits")
 	current_song = globals.music
 
 
@@ -186,3 +187,17 @@ func spawn_gloosh(gloosh_type):
 			new_gloosh.set_side("right")
 	new_gloosh.set_position(spawn_position)
 	add_child(new_gloosh)
+
+
+func roll_credits():
+	globals.music = "normal"
+	globals.player["oxygen"] = 100000
+	var tween = $Credits/Tween
+	tween.interpolate_property($Credits, "rect_position",
+	$Credits.rect_position, Vector2($Credits.rect_position.x, $Credits.rect_position.y - 570), 25,
+	Tween.TRANS_LINEAR, Tween.EASE_OUT)
+	tween.start()
+	while true:  # all the air
+		globals.player["oxygen"] = 100000
+		yield(get_tree().create_timer(1),"timeout")
+		

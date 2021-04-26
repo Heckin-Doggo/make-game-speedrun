@@ -11,6 +11,8 @@ onready var lure = $Area2D
 var appeared = false
 var health = 6
 
+signal end_game
+
 onready var top_right_eye = $TopRightEye
 onready var top_left_eye = $TopLeftEye
 onready var mid_right_eye = $MidRightEye
@@ -28,7 +30,16 @@ func _ready():
 	bot_left_eye.connect("area_entered", self, "lose_bot_left")
 
 func _process(delta):
-	if health == 0:
+	if health == 0:  # die
+		tween.interpolate_property(self, "position",
+		position, Vector2(position.x, position.y + 120), 3,
+		Tween.TRANS_QUAD, Tween.EASE_OUT)
+		tween.start()
+		
+		yield(get_tree().create_timer(3),"timeout")
+		
+		emit_signal("end_game")
+		
 		queue_free()
 
 func appear(body):

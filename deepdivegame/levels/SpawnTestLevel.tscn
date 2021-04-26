@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -10,8 +10,16 @@
 [ext_resource path="res://assets/sounds/DDG-TheDive.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/DeepDiveBackground.png" type="Texture" id=9]
 [ext_resource path="res://assets/sounds/DDG-BossSting3.wav" type="AudioStream" id=10]
+[ext_resource path="res://assets/pcsenior.ttf" type="DynamicFontData" id=11]
 [ext_resource path="res://assets/sounds/DDG-BossTheme.ogg" type="AudioStream" id=12]
 [ext_resource path="res://scenes/Tentacle.tscn" type="PackedScene" id=13]
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 11 )
 
 [node name="SpawnTestLevel" type="Node2D"]
 script = ExtResource( 1 )
@@ -24,6 +32,50 @@ offset = Vector2( 160, 90 )
 [node name="Skadoosh" parent="." instance=ExtResource( 7 )]
 position = Vector2( 171.416, 10024.3 )
 
+[node name="Credits" type="Label" parent="."]
+material = SubResource( 2 )
+margin_top = 10100.0
+margin_right = 320.0
+margin_bottom = 10114.0
+custom_fonts/font = SubResource( 1 )
+text = "<INSERT GAME NAME>
+A game by smubear and Nuclear Chair.
+Created for Ludum Dare 48
+
+Credits:
+Game Development - smuclearCheiar
+
+Feesh as Themselves
+Foosh as Themselves
+Sploosh as Themselves
+Snarks as Themselves
+Gloosh as Themselves
+Kaboosh as Themselves
+Skadoosh as Theirself
+
+Special Thanks:
+Andy and Nikki for playtesting
+GDDC
+BeepBox.co
+GitHub
+Godot Engine
+
+External Resource:
+\"Splash, Jumping, H.wav\" by InspectorJ
+(www.jshaw.co.uk) of Freesound.org
+
+
+
+
+
+Thanks for playing!"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Credits"]
+
 [node name="Tentacle" parent="." instance=ExtResource( 13 )]
 position = Vector2( 56.4593, 10004.3 )
 
@@ -35,7 +87,7 @@ position = Vector2( 160, 9910 )
 texture = ExtResource( 9 )
 
 [node name="Diver" parent="." instance=ExtResource( 2 )]
-position = Vector2( 141.382, 120 )
+position = Vector2( 141.382, 9600 )
 
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 0.5
