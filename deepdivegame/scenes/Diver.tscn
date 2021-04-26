@@ -29,14 +29,14 @@ animations = [ {
 "name": "swim_down",
 "speed": 3.0
 }, {
-"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "swim_h",
-"speed": 5.0
-}, {
 "frames": [ ExtResource( 16 ) ],
 "loop": true,
 "name": "Dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "swim_h",
 "speed": 5.0
 } ]
 

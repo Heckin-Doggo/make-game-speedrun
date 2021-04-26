@@ -76,7 +76,7 @@ func _process(delta):
 	
 	if globals.player["oxygen"] <= 0:
 		dead = true
-		$AnimatedSprite.animation = "dead"
+		$AnimatedSprite.animation = "Dead"
 		$CollisionShape2D.disabled = true
 		$BubbleTimer.paused = true
 		sink = Vector2(0, 20)
