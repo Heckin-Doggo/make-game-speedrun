@@ -118,7 +118,12 @@ func spawn_section4(randnum):
 
 func spawn_bubble():
 	var new_bubble = Bubble.instance()
-	var spawn_area = Vector2(rand_range(10, 310), 250 + globals.player["depth"])
+	var spawn_area_x = rand_range(10, 310)
+	if spawn_area_x < 160:
+		spawn_area_x = spawn_area_x + rand_range(0, 75)
+	else:
+		spawn_area_x = spawn_area_x - rand_range(0, 75)
+	var spawn_area = Vector2(spawn_area_x, 250 + globals.player["depth"])
 	new_bubble.change_position(spawn_area)
 	add_child(new_bubble)
 
