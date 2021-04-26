@@ -58,7 +58,7 @@ __meta__ = {
 [node name="DepthGauge" type="ColorRect" parent="."]
 margin_left = 4.0
 margin_top = 4.0
-margin_right = 78.0
+margin_right = 39.0
 margin_bottom = 15.0
 color = Color( 0.231373, 0.231373, 0.231373, 1 )
 __meta__ = {
@@ -68,7 +68,7 @@ __meta__ = {
 [node name="Screen" type="ColorRect" parent="DepthGauge"]
 margin_left = 1.0
 margin_top = 1.0
-margin_right = 73.0
+margin_right = 34.0
 margin_bottom = 10.0
 color = Color( 0, 0, 0, 1 )
 __meta__ = {
@@ -85,18 +85,18 @@ __meta__ = {
 }
 
 [node name="ColorRect2" type="ColorRect" parent="DepthGauge"]
-margin_left = 7.0
+margin_left = 6.0
 margin_top = -9.0
-margin_right = 10.0
+margin_right = 9.0
 color = Color( 0.145098, 0.145098, 0.145098, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="ColorRect3" type="ColorRect" parent="DepthGauge"]
-margin_left = 64.0
+margin_left = 26.0
 margin_top = -9.0
-margin_right = 67.0
+margin_right = 29.0
 color = Color( 0.145098, 0.145098, 0.145098, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -105,11 +105,11 @@ __meta__ = {
 [node name="Label" type="Label" parent="DepthGauge"]
 margin_left = 2.0
 margin_top = 2.0
-margin_right = 74.0
+margin_right = 34.0
 margin_bottom = 10.0
 custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0.168627, 0.737255, 0.0705882, 1 )
-text = "123456789"
+text = "1234"
 align = 2
 __meta__ = {
 "_edit_use_anchors_": false
