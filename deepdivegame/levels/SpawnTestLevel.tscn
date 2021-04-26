@@ -14,10 +14,10 @@
 [ext_resource path="res://assets/sounds/DDG-BossTheme.ogg" type="AudioStream" id=12]
 [ext_resource path="res://scenes/Tentacle.tscn" type="PackedScene" id=13]
 
-[sub_resource type="CanvasItemMaterial" id=2]
+[sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=2]
 size = 8
 font_data = ExtResource( 11 )
 
@@ -37,11 +37,11 @@ offset = Vector2( 160, 90 )
 position = Vector2( 171.416, 10024.3 )
 
 [node name="Credits" type="Label" parent="."]
-material = SubResource( 2 )
+material = SubResource( 1 )
 margin_top = 10100.0
 margin_right = 320.0
 margin_bottom = 10114.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 text = "<INSERT GAME NAME>
 A game by smubear and Nuclear Chair.
 Created for Ludum Dare 48

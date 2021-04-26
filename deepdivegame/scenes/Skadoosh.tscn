@@ -55,6 +55,12 @@ texture = ExtResource( 2 )
 offset = Vector2( -14, -43 )
 mode = 2
 
+[node name="Light2D2" type="Light2D" parent="."]
+texture = ExtResource( 2 )
+texture_scale = 10.0
+energy = 0.6
+mode = 2
+
 [node name="Tween" type="Tween" parent="."]
 playback_process_mode = 0
 
