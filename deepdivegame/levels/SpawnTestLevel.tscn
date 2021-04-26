@@ -9,7 +9,7 @@
 [ext_resource path="res://scenes/Skadoosh.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/sounds/DDG-TheDive.ogg" type="AudioStream" id=8]
 [ext_resource path="res://assets/DeepDiveBackground.png" type="Texture" id=9]
-[ext_resource path="res://assets/sounds/DDG-BossSting2.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/sounds/DDG-BossSting3.wav" type="AudioStream" id=10]
 [ext_resource path="res://assets/sounds/DDG-BossTheme.ogg" type="AudioStream" id=12]
 [ext_resource path="res://scenes/Tentacle.tscn" type="PackedScene" id=13]
 
@@ -62,10 +62,11 @@ stream = ExtResource( 8 )
 autoplay = true
 
 [node name="FlashlightTimer" type="Timer" parent="."]
+wait_time = 10.0
 autostart = true
 
 [node name="BossSting" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 11 )
+stream = ExtResource( 10 )
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
