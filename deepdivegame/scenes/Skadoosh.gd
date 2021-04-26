@@ -80,6 +80,8 @@ func snark_attack_walls(wall_count):
 		var snark5 = Warning.instance()
 		var snark6 = Warning.instance()
 		var snark_list = [snark1, snark2, snark3, snark4, snark5, snark6]
+		for snark in snark_list:
+			snark.get_node("Alarm").volume_db = -25
 		var start = 10000
 		if x % 2 == 0:
 			for snark in snark_list:
