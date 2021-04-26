@@ -14,6 +14,7 @@ var stop_spawns = false
 var boss_started = false
 
 var current_song = "normal"
+var timer_running = true
 
 var x_bound = 320
 # var rng = RandomNumberGenerator.new()
@@ -29,6 +30,8 @@ func _ready():
 	$Skadoosh.connect("end_game", self, "roll_credits")
 	$Credits/RestartButton.connect("pressed", self, "restart_game")
 	current_song = globals.music
+	if not globals.boss_restart:  # keep the timer going if a boss restart
+		globals.time = 0.0
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -38,6 +41,10 @@ func _process(delta):
 	darkness.set_color(color)
 	if globals.player["depth"] > 9940 and not boss_started:
 		boss_started = true
+		
+	# speedrun timer
+	if timer_running:
+		globals.time += delta
 
 	# Music Handler
 	if current_song != globals.music:
@@ -191,6 +198,8 @@ func spawn_gloosh(gloosh_type):
 
 func roll_credits():
 	globals.music = "normal"
+	timer_running = false
+	$Credits/TimeLabel.text = "Time: " + convert_to_time(globals.time)
 	globals.player["oxygen"] = 100000
 	var tween = $Credits/Tween
 	tween.interpolate_property($Credits, "rect_position",
@@ -200,6 +209,10 @@ func roll_credits():
 	while true:  # all the air
 		globals.player["oxygen"] = 100000
 		yield(get_tree().create_timer(1),"timeout")
+		
+func convert_to_time(time):
+	
+	return
 
 func restart_game():
 	get_tree().change_scene("res://levels/TitleScreen.tscn")

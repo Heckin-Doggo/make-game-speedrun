@@ -16,7 +16,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	ticker += delta
-	print(ticker)
+	# print(ticker)
 	if not started:
 		if ticker > delay:
 			ticker -= delay
@@ -25,4 +25,6 @@ func _process(delta):
 
 func start_game():
 	print("Game starting!")
+	started = true
+	yield(get_tree().create_timer(3), "timeout")
 	get_tree().change_scene("res://levels/SpawnTestLevel.tscn")

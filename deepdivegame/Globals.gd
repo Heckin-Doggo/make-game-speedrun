@@ -14,3 +14,4 @@ var powerups = {
 
 var music = "normal"
 var boss_restart = false
+var time = 0.0  # for speedrunnin

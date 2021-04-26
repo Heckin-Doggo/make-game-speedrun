@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://levels/SpawnTestLevel.gd" type="Script" id=1]
 [ext_resource path="res://scenes/Diver.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://assets/sounds/DDG-BossTheme.ogg" type="AudioStream" id=12]
 [ext_resource path="res://scenes/Tentacle.tscn" type="PackedScene" id=13]
 [ext_resource path="res://assets/Boat.png" type="Texture" id=14]
+[ext_resource path="res://font.tres" type="DynamicFont" id=15]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -92,6 +93,19 @@ margin_right = 200.0
 margin_bottom = 396.0
 custom_fonts/font = SubResource( 4 )
 text = "Restart"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLabel" type="Label" parent="Credits"]
+margin_left = 8.0
+margin_top = 404.0
+margin_right = 312.0
+margin_bottom = 418.0
+custom_fonts/font = ExtResource( 15 )
+custom_colors/font_color = Color( 0.729412, 0.729412, 0.729412, 1 )
+text = "Time:"
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

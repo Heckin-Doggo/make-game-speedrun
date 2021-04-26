@@ -38,6 +38,7 @@ func _process(delta):
 func restart():
 	globals.player["oxygen"] = 68
 	globals.player["alive"] = true
+	globals.music = "normal"
 	$DeathPrompt/ButtonBossRestart.hide()
 	$DeathPrompt.hide()
 	get_tree().reload_current_scene()
