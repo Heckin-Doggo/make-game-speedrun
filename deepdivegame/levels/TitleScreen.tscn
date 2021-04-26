@@ -69,3 +69,14 @@ margin_right = 0.0
 margin_bottom = -128.0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Wipe" type="ColorRect" parent="."]
+margin_top = 64.0
+margin_right = 320.0
+margin_bottom = 272.0
+color = Color( 0.117647, 0.356863, 0.556863, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="Wipe"]

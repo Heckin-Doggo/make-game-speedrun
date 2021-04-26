@@ -9,6 +9,8 @@ var delay = 60.0/70.0
 
 onready var Diver = $Boat/Diver
 onready var DiverAnim = $Boat/Diver/Anim
+onready var Wipe = $Wipe
+onready var WipeTween = $Wipe/Tween
 
 
 # Called when the node enters the scene tree for the first time.
@@ -45,8 +47,13 @@ func start_game():
 		yield(get_tree().create_timer(1),"timeout")
 		
 		$Splash.play()
-		yield($Splash, "finished")
+		yield(get_tree().create_timer(0.5),"timeout")
+		WipeTween.interpolate_property(Wipe, "rect_position",
+		Wipe.rect_position, Vector2(Wipe.rect_position.x, Wipe.rect_position.y - 200), 0.5,
+		Tween.TRANS_QUAD, Tween.EASE_OUT)
+		WipeTween.start()
 		
+		yield(get_tree().create_timer(2),"timeout")
 		
 		# yield(get_tree().create_timer(3), "timeout")
 		get_tree().change_scene("res://levels/SpawnTestLevel.tscn")
