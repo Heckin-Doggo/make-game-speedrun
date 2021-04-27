@@ -61,6 +61,7 @@ shape = SubResource( 2 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
+volume_db = -8.0
 autoplay = true
 
 [node name="TitleScreenUI" parent="." instance=ExtResource( 8 )]

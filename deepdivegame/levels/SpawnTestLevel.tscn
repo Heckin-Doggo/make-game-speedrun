@@ -153,6 +153,7 @@ texture = ExtResource( 14 )
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -10.0
 autoplay = true
 
 [node name="FlashlightTimer" type="Timer" parent="."]
@@ -164,3 +165,4 @@ stream = ExtResource( 10 )
 
 [node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+volume_db = -10.0

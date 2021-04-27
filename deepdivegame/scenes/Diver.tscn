@@ -84,4 +84,4 @@ wait_time = 5.0
 
 [node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 15 )
-volume_db = -10.0
+volume_db = -7.855

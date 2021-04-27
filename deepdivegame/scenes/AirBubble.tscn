@@ -38,5 +38,5 @@ mode = 2
 
 [node name="BubblePop" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 4 )
-volume_db = -20.194
+volume_db = -14.136
 pitch_scale = 2.25

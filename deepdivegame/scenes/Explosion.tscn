@@ -44,7 +44,7 @@ animation = "boom"
 
 [node name="ExplodeSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 10 )
-volume_db = -12.594
+volume_db = -5.0
 
 [node name="Light2D" type="Light2D" parent="."]
 texture = ExtResource( 11 )

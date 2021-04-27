@@ -152,10 +152,13 @@ __meta__ = {
 
 [node name="DeathPrompt" type="Control" parent="."]
 visible = false
-margin_left = 121.0
-margin_top = 60.0
-margin_right = 161.0
-margin_bottom = 100.0
+margin_left = 114.0
+margin_top = 87.0
+margin_right = 154.0
+margin_bottom = 127.0
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="Label" type="Label" parent="DeathPrompt"]
 margin_left = -20.0
@@ -165,6 +168,9 @@ margin_bottom = 11.0
 custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 0, 0, 1 )
 text = "Oh no! You drowned!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="ButtonNormalRestart" type="Button" parent="DeathPrompt"]
 margin_left = 2.0

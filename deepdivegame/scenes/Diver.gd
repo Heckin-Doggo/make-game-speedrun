@@ -79,7 +79,7 @@ func _process(delta):
 		$AnimatedSprite.animation = "Dead"
 		$CollisionShape2D.disabled = true
 		$BubbleTimer.paused = true
-		sink = Vector2(0, 20)
+		sink = Vector2(0, -20)
 		globals.player["alive"] = false
 
 
